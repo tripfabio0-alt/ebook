@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;700&family=Cinzel:wght@400;700&display=swap');
 
@@ -1135,10 +1136,38 @@
             <div class="dedication-footer">A Vantagem Soberana</div>
         </div>
     </div> <!-- END BOOK -->
-    <button id="download-btn" onclick="window.print()">
+    <button id="download-btn" onclick="generatePDF()">
         <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
         Baixar Ebook (PDF)
     </button>
+
+    <script>
+        function generatePDF() {
+            const element = document.querySelector('.book-page');
+            const opt = {
+                margin: 0,
+                filename: 'A_Vantagem_Soberana.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { 
+                    scale: 2, 
+                    useCORS: true, 
+                    letterRendering: true,
+                    scrollX: 0,
+                    scrollY: 0
+                },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+            };
+
+            // Hide button during generation
+            document.getElementById('download-btn').style.display = 'none';
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                document.getElementById('download-btn').style.display = 'flex';
+            });
+        }
+    </script>
+
 </body>
 
 </html>
