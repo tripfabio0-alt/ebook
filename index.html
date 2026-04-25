@@ -42,7 +42,7 @@
         .page-sheet::after {
             content: counter(page-counter);
             position: absolute;
-            top: 40px;
+            bottom: 40px;
             right: 40px;
             font-family: 'Montserrat', sans-serif;
             color: #8b6e3f;
@@ -104,17 +104,15 @@
         
         /* Estilos do Manifesto */
         .manifesto-container { max-width: 600px; margin: auto; }
-        .manifesto-item { margin-bottom: 40px; position: relative; }
+        .manifesto-item { margin-bottom: 60px; position: relative; }
         .manifesto-num { 
-            font-size: 4em; 
+            font-size: 1.2em; 
             color: #8b6e3f; 
-            opacity: 0.15; 
             font-weight: bold; 
-            position: absolute;
-            top: -40px;
-            left: -20px;
             font-family: 'Montserrat', sans-serif;
-            z-index: 0;
+            border-bottom: 2px solid #8b6e3f;
+            display: inline-block;
+            margin-bottom: 10px;
         }
         .manifesto-title {
             position: relative;
