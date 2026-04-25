@@ -29,7 +29,7 @@
 
         .page-sheet {
             background-color: #fdfbf7;
-            padding: 80px 100px;
+            padding: 80px 100px 140px 100px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
             border-radius: 2px;
             position: relative;
@@ -54,16 +54,16 @@
         .page-sheet::before {
             content: "";
             position: absolute;
-            bottom: 5px; /* Lower position for larger size */
+            bottom: 25px;
             left: 50%;
             transform: translateX(-50%);
-            width: 380px; /* Even larger size as requested */
-            height: 150px;
+            width: 220px; /* Reduced size to avoid impacting text */
+            height: 90px;
             background-image: url('logo_v3.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            opacity: 1; /* Maximum visibility */
+            opacity: 0.7; /* Slightly more subtle watermark effect */
             mix-blend-mode: multiply;
         }
 
