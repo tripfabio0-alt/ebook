@@ -167,13 +167,16 @@
             display: flex; gap: 10px; z-index: 10000;
         }
         .lang-btn {
-            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);
-            border: 1px solid rgba(139, 110, 63, 0.3); color: #c5a059;
-            padding: 10px 18px; border-radius: 30px; cursor: pointer;
-            font-family: 'Montserrat', sans-serif; font-weight: bold; transition: all 0.3s ease;
+            background: none;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0.6;
         }
-        .lang-btn:hover { background: #8b6e3f; color: white; transform: translateY(-3px); }
-        .lang-btn.active { background: #8b6e3f; color: white; border-color: #8b6e3f; }
+
+        .lang-btn:hover { transform: scale(1.2); opacity: 1; }
+        .lang-btn.active { opacity: 1; transform: scale(1.1); filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.5)); }
 
         #download-btn {
             position: fixed; bottom: 30px; right: 30px;
@@ -189,13 +192,13 @@
 <body>
     <div id="language-switcher">
         <button class="lang-btn" onclick="window.location.href='index.html'" title="Português">
-            <img src="https://flagcdn.com/w40/br.png" width="24" style="border-radius: 50%;">
+            <img src="https://flagcdn.com/w80/br.png" width="40" style="border-radius: 50%;">
         </button>
         <button class="lang-btn" onclick="window.location.href='espanol.html'" title="Español">
-            <img src="https://flagcdn.com/w40/es.png" width="24" style="border-radius: 50%;">
+            <img src="https://flagcdn.com/w80/es.png" width="40" style="border-radius: 50%;">
         </button>
         <button class="lang-btn active" onclick="window.location.href='english.html'" title="English">
-            <img src="https://flagcdn.com/w40/us.png" width="24" style="border-radius: 50%;">
+            <img src="https://flagcdn.com/w80/us.png" width="40" style="border-radius: 50%;">
         </button>
     </div>
 
