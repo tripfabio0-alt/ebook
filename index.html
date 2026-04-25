@@ -54,16 +54,16 @@
         .page-sheet::before {
             content: "";
             position: absolute;
-            bottom: 25px;
+            bottom: 15px; /* Slightly lower to occupy the new padding space */
             left: 50%;
             transform: translateX(-50%);
-            width: 220px; /* Reduced size to avoid impacting text */
-            height: 90px;
+            width: 280px; /* Re-increased size within the new margins */
+            height: 110px;
             background-image: url('logo_v3.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            opacity: 0.7; /* Slightly more subtle watermark effect */
+            opacity: 0.8; /* Balanced visibility */
             mix-blend-mode: multiply;
         }
 
