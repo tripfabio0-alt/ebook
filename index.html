@@ -133,9 +133,54 @@
             position: relative;
             z-index: 1;
         }
-        .cover { text-align: center; margin-top: 30vh; margin-bottom: 30vh; }
         .toc { line-height: 2; }
-    </style>
+
+        /* Floating Action Button */
+        .download-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #8b6e3f;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            background-color: #a68b5a;
+        }
+        .download-btn svg { width: 20px; height: 20px; fill: currentColor; }
+
+        @media print {
+            body { 
+                background: white !important; 
+                padding: 0 !important; 
+                display: block !important;
+            }
+            .book-page { 
+                width: 100% !important; 
+                max-width: none !important; 
+                gap: 0 !important; 
+            }
+            .page-sheet { 
+                box-shadow: none !important; 
+                border: none !important; 
+                padding: 20mm !important; 
+                min-height: auto !important;
+                page-break-after: always;
+            }
+            .download-btn { display: none !important; }
+        }
 </head>
 <body>
     <div class="book-page">
@@ -590,5 +635,9 @@
             <h2 style="text-align: center; color: #8b6e3f; margin-top: 50px; font-family: 'Montserrat', sans-serif; letter-spacing: 0.2em;">A SOBERANIA COMEÇA AGORA.</h2>
         </div>
     </div> <!-- END BOOK -->
+    <button class="download-btn" onclick="window.print()">
+        <svg viewBox="0 0 24 24"><path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z"/></svg>
+        SALVAR EM PDF
+    </button>
 </body>
 </html>
