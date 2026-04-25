@@ -1133,28 +1133,44 @@
     </button>
 
     <script>
-        function generatePDF() {
-            const element = document.querySelector('.book-page');
-            const opt = {
+        async function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const sheets = document.querySelectorAll('.page-sheet');
+            const pdf = new html2pdf.Bundle().set({
                 margin: 0,
                 filename: 'A_Vantagem_Soberana.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
+                image: { type: 'jpeg', quality: 1.0 },
                 html2canvas: { 
-                    scale: 2, 
-                    useCORS: true, 
+                    scale: 3, // High resolution
+                    useCORS: true,
                     letterRendering: true,
-                    scrollX: 0,
-                    scrollY: 0
+                    logging: false
                 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            });
+
+            // Hide button
+            const btn = document.getElementById('download-btn');
+            btn.style.display = 'none';
+
+            // Custom worker to process each page as a 'photo'
+            const worker = html2pdf().set({
+                margin: 0,
+                filename: 'A_Vantagem_Soberana.pdf',
+                image: { type: 'jpeg', quality: 1.0 },
+                html2canvas: { scale: 3, useCORS: true },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
-            };
+                pagebreak: { mode: 'legacy' }
+            }).from(sheets[0]).toPdf().get('pdf');
 
-            // Hide button during generation
-            document.getElementById('download-btn').style.display = 'none';
+            for (let i = 1; i < sheets.length; i++) {
+                worker.then((pdf) => {
+                    pdf.addPage();
+                }).from(sheets[i]).toContainer().toCanvas().toImg().toPdf();
+            }
 
-            html2pdf().set(opt).from(element).save().then(() => {
-                document.getElementById('download-btn').style.display = 'flex';
+            worker.save().then(() => {
+                btn.style.display = 'flex';
             });
         }
     </script>
