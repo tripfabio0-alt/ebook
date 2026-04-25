@@ -176,11 +176,17 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            border: none; /* Remove border for full bleed */
+            box-shadow: none; /* Remove shadow for full bleed */
+            border-radius: 0;
+            height: auto;
+            min-height: 100vh; /* Make it fill the screen height */
         }
         .cover-image {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            min-height: 100vh;
+            object-fit: cover; /* Fill the entire area */
             display: block;
         }
         
