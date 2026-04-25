@@ -102,6 +102,40 @@
             filter: none;
         }
 
+        .page-sheet::after {
+            content: counter(page-counter);
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            font-family: 'Montserrat', sans-serif;
+            color: #8b6e3f;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        /* Real IMG Footer Logo */
+        .footer-logo {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 350px;
+            height: auto;
+            max-height: 140px;
+            mix-blend-mode: multiply;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .back-cover .footer-logo {
+            mix-blend-mode: normal;
+        }
+
+        /* Hide pseudo-elements */
+        .page-sheet::before {
+            display: none !important;
+        }
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .book-page {
@@ -349,48 +383,88 @@
         }
 
         @media print {
+            /* Remove fundo e espaçamento do body */
             body {
                 background: white !important;
                 padding: 0 !important;
                 margin: 0 !important;
             }
-            
+
             .book-page {
-                box-shadow: none !important;
-                margin: 0 !important;
-                padding: 0 !important;
                 max-width: 148mm !important;
                 width: 148mm !important;
+                margin: 0 auto !important;
+                padding: 0 !important;
+                box-shadow: none !important;
             }
 
             .page-sheet {
-                box-shadow: none !important;
-                border: none !important;
+                /* Altura automática, sem fixar 210mm */
+                height: auto !important;
+                min-height: 0 !important;
+                /* Padding consistente com o @page margin */
+                padding: 15mm !important;
                 margin: 0 !important;
-                padding: 15mm !important; /* Respeita a margem do guia */
-                width: 148mm !important;
-                height: 210mm !important;
+                /* Garante quebra após cada página */
                 page-break-after: always !important;
                 page-break-inside: avoid !important;
-                background-color: white !important;
+                /* Mantém cores de fundo */
                 -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                background-color: #fdfbf7 !important;
+                /* Remove sombras e bordas extras */
+                box-shadow: none !important;
+                border: none !important;
             }
 
-            .page-sheet::after, .page-sheet::before {
-                display: block !important;
+            /* Ajuste especial para a capa (sem padding extra) */
+            .page-sheet.cover-page {
+                padding: 0 !important;
+                background-color: #000 !important;
             }
 
             .cover-image {
-                width: 148mm !important;
-                height: 210mm !important;
-                object-fit: cover !important;
+                width: 100% !important;
+                height: auto !important;
+                max-height: 210mm !important;
+                object-fit: contain !important;
+                display: block !important;
+                margin: 0 auto !important;
             }
-            
+
+            /* Contracapa: garante fundo escuro */
+            .page-sheet.back-cover {
+                background-color: #1a120f !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            /* Remove pseudo-elementos problemáticos */
+            .page-sheet::before,
+            .page-sheet::after {
+                display: none !important;
+            }
+
+            /* Garante que o logo real seja visível */
+            .footer-logo {
+                width: 60mm !important;
+                bottom: 10mm !important;
+                display: block !important;
+            }
+
+            /* Esconde o botão de download */
             #download-btn {
                 display: none !important;
             }
 
-            h1, h2, h3, img, table {
+            /* Evita quebras dentro de títulos e blocos grandes */
+            h1, h2, h3, h4, .chapter-title, .quote, .manifesto-item {
+                page-break-inside: avoid !important;
+            }
+
+            /* Ajuste de margem no sumário, etc. */
+            .toc, .manifesto-container {
                 page-break-inside: avoid !important;
             }
         }
@@ -424,7 +498,9 @@
                     Capítulo 11 | A Ação Silenciosa<br>
                     Conclusão | O Manifesto da Mulher Soberana
                 </p>
-            </div>
+                <img src="https://ebookflow-ai.vercel.app/logo_v3.png" class="footer-logo">
+        </div>
+            <img src="https://ebookflow-ai.vercel.app/logo_v3.png" class="footer-logo">
         </div>
 
         <!-- PAGE 3: INTRO -->
@@ -465,11 +541,13 @@
                 como você se percebe.</p>
             <div class="quote">"Soberania não é um destino. É uma prática diária de escolher quem você é, mesmo quando
                 ninguém está olhando."</div>
+            <img src="https://ebookflow-ai.vercel.app/logo_v3.png" class="footer-logo">
         </div>
 
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 1</span> O Paradoxo da Respeitabilidade
-            </div>
+                <img src="https://ebookflow-ai.vercel.app/logo_v3.png" class="footer-logo">
+        </div>
             <p>Existe uma crença profundamente enraizada no imaginário coletivo sobre liderança feminina: a ideia de que
                 respeito é uma recompensa pela diplomacia. Que se você for suficientemente gentil, suficientemente
                 cuidadosa com as palavras, suficientemente atenta às necessidades dos outros, as pessoas naturalmente
@@ -522,6 +600,7 @@
                 consistentemente."</div>
             <p>O paradoxo da respeitabilidade se resolve quando você para de perseguir o respeito e começa a construí-lo
                 — um resultado, uma decisão, um padrão de cada vez.</p>
+            <img src="https://ebookflow-ai.vercel.app/logo_v3.png" class="footer-logo">
         </div>
 
         <div class="page-sheet">
@@ -584,6 +663,7 @@
             </ul>
             <p>Este processo, repetido consistentemente ao longo de meses e anos, constrói uma reputação que nenhum
                 discurso de autopromoção pode criar.</p>
+            <img src="https://ebookflow-ai.vercel.app/logo_v3.png" class="footer-logo">
         </div>
 
         <div class="page-sheet">
@@ -630,6 +710,7 @@
                 resultados não são os esperados.</p>
             <div class="quote">"Seu time não precisa de uma líder perfeita. Precisa de uma líder presente, disposta a
                 olhar nos olhos da verdade, e pronta para construir o próximo passo."</div>
+            <img src="https://ebookflow-ai.vercel.app/logo_v3.png" class="footer-logo">
         </div>
 
         <div class="page-sheet">
@@ -678,11 +759,13 @@
             </ul>
             <div class="quote">"A tolerância de comportamentos que violam seus padrões é o que perpetua ambientes
                 tóxicos. Quando você tolera o intolerável, você se torna cúmplice dele."</div>
+            <img src="https://ebookflow-ai.vercel.app/logo_v3.png" class="footer-logo">
         </div>
 
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 5</span> O Custo de Manter o Peso Morto
-            </div>
+                <img src="https://ebookflow-ai.vercel.app/logo_v3.png" class="footer-logo">
+        </div>
             <p>Toda decisão de manter tem um custo de oportunidade. Quando você mantém pessoas, projetos, ou situações
                 que drenam sua energia sem retornar valor proporcional, você está fazendo uma escolha - e essa escolha
                 tem um preço que raramente é calculado com honestidade.</p>
@@ -723,6 +806,7 @@
                 em modo de desgaste unilateral.</p>
             <div class="quote">"A coragem de eliminar o supérfluo é a primeira marca da soberania. Não é o que você
                 acumula que define sua grandeza - é o que você tem a sabedoria de deixar para trás."</div>
+            <img src="https://ebookflow-ai.vercel.app/logo_v3.png" class="footer-logo">
         </div>
 
         <div class="page-sheet">
@@ -767,6 +851,7 @@
                 tendo tempo valioso.</p>
             <p>Este é o poder transformador da recusa estratégica: ela não apenas protege seu tempo - ela redefine como
                 seu tempo é percebido pelos outros.</p>
+            <img src="https://ebookflow-ai.vercel.app/logo_v3.png" class="footer-logo">
         </div>
 
         <div class="page-sheet">
@@ -817,6 +902,7 @@
             <p>Este processo não é rápido. Mas é linear: cada hora de prática deliberada te move um passo adiante na
                 jornada da maestria. E a mestra que você se torna é insubstituível de uma forma que nenhum generalista
                 jamais será.</p>
+            <img src="https://ebookflow-ai.vercel.app/logo_v3.png" class="footer-logo">
         </div>
 
         <div class="page-sheet">
@@ -869,6 +955,7 @@
             </ul>
             <div class="quote">"Se você não consegue medir, você não consegue melhorar. E se você não consegue melhorar,
                 você apenas está ocupada - não está crescendo."</div>
+            <img src="https://ebookflow-ai.vercel.app/logo_v3.png" class="footer-logo">
         </div>
 
         <div class="page-sheet">
@@ -909,6 +996,7 @@
                 mesmo quando sente o impulso de ceder.</p>
             <p>Comece imperfeita. Corrija no movimento. Aprenda com cada iteração. Este é o campo de treinamento da vida
                 real - e não há substituto para ele.</p>
+            <img src="https://ebookflow-ai.vercel.app/logo_v3.png" class="footer-logo">
         </div>
 
         <div class="page-sheet">
@@ -957,6 +1045,7 @@
             </ul>
             <div class="quote">"Você não pode crescer além do teto imposto pelo seu ecossistema. Se quer crescer,
                 construa um ecossistema cujo teto seja mais alto que o seu atual."</div>
+            <img src="https://ebookflow-ai.vercel.app/logo_v3.png" class="footer-logo">
         </div>
 
         <div class="page-sheet">
@@ -982,28 +1071,8 @@
                 força que nenhum discurso pode substituir."</div>
 
             <h3>Comunicação Estratégica vs. Autopromoção</h3>
-            <p>Ação silenciosa não significa invisibilidade. Significa que sua visibilidade é construída sobre a base
-                sólida de entregas reais, não sobre a amplificação de intenções.</p>
-            <p>A comunicação estratégica acontece depois da entrega, não antes. Você documenta o resultado, comunica o
-                impacto para os stakeholders relevantes, e conecta sua contribuição aos objetivos mais amplos da
-                organização. Você não pede crédito - você fornece evidência.</p>
-
-            <h3>Cultivando a Disciplina do Silêncio Produtivo</h3>
-            <ul>
-                <li>Defina métricas internas claras de progresso. Não dependa de feedback externo para saber se está
-                    avançando.</li>
-                <li>Pratique o foco profundo. Reserve blocos de tempo protegidos para trabalho que exige atenção plena.
-                </li>
-                <li>Celebre entregas, não anúncios. Recompense-se internamente pela conclusão, não pela declaração de
-                    intenção.</li>
-            </ul>
-            <p>Lentamente, você vai descobrir que o silêncio produtivo não é ausência - é concentração. E que a
-                concentração produz resultados que a dispersão da autopromoção nunca poderia gerar.</p>
-        </div>
-
-        <div class="page-sheet">
-            <div class="chapter-title"><span class="chapter-number">CONCLUSÃO</span> O Manifesto da Mulher Soberana
-            </div>
+            <p>Ação silenciosa não significa invisibilidade. Significa que sua visi        <div class="page-sheet">
+            <div class="chapter-title"><span class="chapter-number">CONCLUSÃO</span> O Manifesto da Mulher Soberana</div>
             <p>Você chegou ao fim deste livro. Mas chegou, na verdade, ao início de algo. Porque soberania não é um
                 estado que se alcança lendo um livro - é uma prática que se constrói vivendo cada princípio descrito
                 aqui, dia após dia, em cada decisão, em cada interação, em cada momento de escolha entre o que é
@@ -1012,7 +1081,6 @@
                 comprometimento com um caminho.</p>
 
             <div class="manifesto-container">
-
                 <div class="manifesto-item">
                     <div class="manifesto-header">
                         <div class="manifesto-num">01</div>
@@ -1110,7 +1178,6 @@
                     <p class="manifesto-text">Eu entrego. Não anuncio. Deixo que meus resultados falem por mim. Trabalho
                         em silêncio produtivo, sem a necessidade de validação constante.</p>
                 </div>
-
             </div>
 
             <div class="quote">"Soberania não é um destino. É a escolha que você faz todos os dias de ser inteiramente
@@ -1123,6 +1190,7 @@
             <h2
                 style="text-align: center; color: #8b6e3f; margin-top: 50px; font-family: 'Montserrat', sans-serif; letter-spacing: 0.2em;">
                 A SOBERANIA COMEÇA AGORA.</h2>
+            <img src="https://ebookflow-ai.vercel.app/logo_v3.png" class="footer-logo">
         </div>
 
         <!-- PAGE: DEDICATION (BACK COVER) -->
@@ -1136,6 +1204,7 @@
                 <p>"Tudo o que aqui está escrito, foi forjado para vós e por vós."</p>
             </div>
             <div class="dedication-footer">A Vantagem Soberana</div>
+            <img src="https://ebookflow-ai.vercel.app/logo_dark.png" class="footer-logo">
         </div>
     </div> <!-- END BOOK -->
     <button id="download-btn" onclick="window.print()">
