@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;700&family=Cinzel:wght@400;700&display=swap');
 
@@ -84,7 +85,7 @@
         /* Special footer for back cover */
         .page-sheet.back-cover::after {
             display: none;
-            /* No page number */
+            /* No page number on the last page */
         }
 
         .page-sheet.back-cover::before {
@@ -342,6 +343,24 @@
             fill: currentColor;
         }
 
+        /* Spinner for loading state */
+        .spinner {
+            width: 20px;
+            height: 20px;
+            animation: rotate 2s linear infinite;
+        }
+        .spinner circle {
+            stroke: white;
+            stroke-linecap: round;
+            animation: dash 1.5s ease-in-out infinite;
+        }
+        @keyframes rotate { 100% { transform: rotate(360deg); } }
+        @keyframes dash {
+            0% { stroke-dasharray: 1, 150; stroke-dashoffset: 0; }
+            50% { stroke-dasharray: 90, 150; stroke-dashoffset: -35; }
+            100% { stroke-dasharray: 90, 150; stroke-dashoffset: -124; }
+        }
+
         @media print {
             @page {
                 size: A4;
@@ -479,7 +498,7 @@
 
             <h3>A Dinâmica de Poder</h3>
             <p>Quando você busca aprovação, você posiciona-se inconscientemente como alguém que precisa de validação
-                externa para confirmar seu valor. Esse posicionamento, mesmo que involuntário, cria uma dinâmica de
+                externa para confirmar seu valor. Esse posicionamento, even if involuntary, cria uma dinâmica de
                 poder clara: você em posição de peticionante, os outros em posição de julgadores.</p>
             <p>Observe como isso se manifesta no dia a dia corporativo:</p>
             <ul>
@@ -638,7 +657,7 @@
             <p>O que você não tolera define quem você é com mais precisão do que aquilo que você valoriza. Valores são
                 fáceis de declarar em momentos de facilidade. O que você não tolera - e efetivamente não tolera, com
                 consequências reais - define o contorno real do seu caráter profissional.</p>
-            <p>O conceito do No-Fly Zone é simples: há comportamentos que são absolutely incompatíveis com o ambiente
+            <p>O conceito do No-Fly Zone é simples: há comportamentos que são absolutamente incompatíveis com o ambiente
                 que você está construindo. Não são preferências. Não são sugestões. São limites inegociáveis,
                 comunicados com clareza, e aplicados com consistência.</p>
 
@@ -749,7 +768,7 @@
                 que você pode fazer com excelência, honesta sobre o que seria feito de forma medíocre por falta de tempo
                 ou energia, e honesta sobre o que simplesmente não está alinhado com seus objetivos.</p>
             <ul>
-                <li><strong>Estabeleça seus limites com antecedência.</strong> Defina internamente, antes que as
+                <li><strong>Estabeleça seus limites com antecedência.</strong> Defina internamente, before as
                     solicitações cheguem, o que está e o que não está dentro da sua zona de comprometimento.</li>
                 <li><strong>Pratique o não estratégico começando com situações de baixo risco.</strong> A habilidade de
                     recusar se fortalece com prática consistente.</li>
@@ -1100,7 +1119,7 @@
                         <h3 class="manifesto-title">ECOSSISTEMA ELEVADO</h3>
                     </div>
                     <p class="manifesto-text">Meu ecossistema me eleva. Sou intencional sobre quem tem acesso à minha
-                        energy e ao meu tempo. Construo relações que me desafiam, me expandem, e me sustentam.</p>
+                        energia e ao meu tempo. Construo relações que me desafiam, me expandem, e me sustentam.</p>
                 </div>
 
                 <div class="manifesto-item">
@@ -1139,11 +1158,60 @@
             <div class="dedication-footer">A Vantagem Soberana</div>
         </div>
     </div> <!-- END BOOK -->
-    <button id="download-btn" onclick="window.print()">
+
+    <button id="download-btn" onclick="generatePDF()">
         <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
         Baixar Ebook (PDF)
     </button>
 
+    <script>
+        async function generatePDF() {
+            const btn = document.getElementById('download-btn');
+            const originalText = btn.innerHTML;
+            
+            // Show loading state
+            btn.disabled = true;
+            btn.innerHTML = '<svg class="spinner" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" fill="none" stroke-width="5" stroke="#fff"></circle></svg> Gerando Ebook...';
+            btn.style.opacity = '0.7';
+
+            // Ensure we are at the top
+            window.scrollTo(0, 0);
+
+            // Wait a bit for images
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            const element = document.querySelector('.book-page');
+            
+            // Use html2pdf with specific image-mode settings
+            const opt = {
+                margin: 0,
+                filename: 'A_Vantagem_Soberana_Oficial.pdf',
+                image: { type: 'jpeg', quality: 1.0 },
+                html2canvas: { 
+                    scale: 3, // Very high quality
+                    useCORS: true,
+                    allowTaint: true,
+                    letterRendering: true,
+                    logging: false,
+                    backgroundColor: '#fdfbf7'
+                },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                pagebreak: { mode: ['css', 'legacy'] }
+            };
+
+            try {
+                // Generate and download automatically
+                await html2pdf().set(opt).from(element).save();
+            } catch (error) {
+                console.error('Erro:', error);
+                alert('Erro ao gerar o arquivo. Tente novamente ou use Ctrl+P.');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+                btn.style.opacity = '1';
+            }
+        }
+    </script>
 </body>
 
 </html>
