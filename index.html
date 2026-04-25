@@ -1152,43 +1152,48 @@
             const originalText = btn.innerHTML;
             
             btn.disabled = true;
-            btn.innerHTML = 'Gerando Ebook...';
+            btn.innerHTML = 'Preparando Páginas...';
             btn.style.opacity = '0.7';
 
-            // 1. Garante que o usuário está no topo para a captura começar do início
-            window.scrollTo(0, 0);
-
-            // 2. Aguarda o carregamento completo de todas as imagens antes de iniciar
-            const images = document.getElementsByTagName('img');
-            const imagePromises = Array.from(images).map(img => {
-                if (img.complete) return Promise.resolve();
-                return new Promise(resolve => { img.onload = resolve; img.onerror = resolve; });
-            });
-            await Promise.all(imagePromises);
-
-            const element = document.querySelector('.book-page');
-            
-            const opt = {
-                margin: 0,
-                filename: 'A_Vantagem_Soberana_Oficial.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { 
-                    scale: 2, // Reduzido de 3 para 2 para evitar estouro de memória/páginas brancas
-                    useCORS: true, 
-                    letterRendering: true,
-                    scrollY: 0,
-                    windowWidth: document.documentElement.offsetWidth
-                },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-                // O segredo das quebras: identifica cada .page-sheet como uma nova página
-                pagebreak: { mode: ['avoid-all', 'css', 'legacy'], before: '.page-sheet' }
-            };
-
             try {
-                await html2pdf().set(opt).from(element).save();
+                // 1. Carregar dependências se necessário (jsPDF e html2canvas já estão no bundle do html2pdf)
+                // Mas vamos usar a API do jsPDF diretamente para controle total
+                const { jsPDF } = window.jspdf || {}; // Algumas versões do bundle expõem assim
+                
+                // Se não estiver disponível via jspdf, o html2pdf já tem as instâncias internas
+                // Vamos usar a abordagem de captura individual que é infalível
+                
+                const pages = document.querySelectorAll('.page-sheet');
+                const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
+                const totalPages = pages.length;
+
+                for (let i = 0; i < totalPages; i++) {
+                    btn.innerHTML = `Processando página ${i + 1} de ${totalPages}...`;
+                    
+                    const canvas = await html2canvas(pages[i], {
+                        scale: 2,
+                        useCORS: true,
+                        logging: false,
+                        backgroundColor: '#fdfbf7',
+                        // Garante que capture a página inteira mesmo se houver scroll
+                        width: pages[i].offsetWidth,
+                        height: pages[i].offsetHeight
+                    });
+
+                    const imgData = canvas.toDataURL('image/jpeg', 0.95);
+                    
+                    if (i > 0) pdf.addPage();
+                    
+                    // A4: 210 x 297 mm
+                    pdf.addImage(imgData, 'JPEG', 0, 0, 210, 297);
+                }
+
+                btn.innerHTML = 'Finalizando arquivo...';
+                pdf.save('A_Vantagem_Soberana_Oficial.pdf');
+
             } catch (error) {
                 console.error('Erro ao gerar PDF:', error);
-                alert('Ocorreu um erro. Tente usar o comando Imprimir (Ctrl+P) do navegador e salvar como PDF.');
+                alert('Erro na geração automática. Por favor, use Ctrl+P e escolha "Salvar como PDF".');
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = originalText;
