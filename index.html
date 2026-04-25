@@ -159,22 +159,25 @@
 
         /* Dedication Page / Back Cover */
         .page-sheet.back-cover {
-            background-color: #1a0f0a; /* Darkest brown from cover */
+            background-color: #2b1d16; /* Warm chocolate brown */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 80px 100px;
-            color: #d4af37; /* Gold text */
+            color: #f4c430; /* Richer, more vibrant gold */
             text-align: center;
             min-height: 1000px;
+        }
+        .page-sheet.back-cover::after {
+            display: none; /* No page number on the last page */
         }
         .dedication-title {
             font-family: 'Cinzel', serif;
             font-size: 2.5em;
             letter-spacing: 0.3em;
             margin-bottom: 60px;
-            border-bottom: 1px solid #d4af37;
+            border-bottom: 1px solid #f4c430;
             padding-bottom: 20px;
         }
         .dedication-text {
@@ -640,14 +643,14 @@
         </div>
 
         <!-- PAGE: DEDICATION (BACK COVER) -->
-        <div class="page-sheet back-cover" style="background-color: #2c2420; color: #d4af37; padding: 60px; display: flex; flex-direction: column; justify-content: center; align-items: center; font-family: 'Lora', serif;">
-            <div class="dedication-title" style="font-family: 'Cinzel', serif; font-size: 2em; letter-spacing: 0.2em; margin-bottom: 40px;">DEDICATÓRIA</div>
-            <div class="dedication-text" style="text-align: center; font-size: 1.2em; line-height: 1.6; max-width: 600px;">
+        <div class="page-sheet back-cover">
+            <div class="dedication-title">DEDICATÓRIA</div>
+            <div class="dedication-text">
                 <p>"Ao meu marido, que acreditou na minha dedicação e no meu propósito quando eles eram ainda apenas silêncio. O teu apoio incondicional é a fronteira mais segura onde a minha autoridade se apoia."</p>
                 <p>"Ao meu filho e à minha filha, o meu legado mais valioso. Que estas páginas vos sirvam de prova que a soberania não se pede — constrói-se com verdade, limites e amor."</p>
                 <p>"Tudo o que aqui está escrito, foi forjado para vós e por vós."</p>
             </div>
-            <div class="dedication-footer" style="margin-top: 60px; font-family: 'Cinzel', serif; letter-spacing: 0.1em;">A Vantagem Soberana</div>
+            <div class="dedication-footer">A Vantagem Soberana</div>
         </div>
     </div> <!-- END BOOK -->
 </body>
