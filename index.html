@@ -117,15 +117,41 @@
         .page-sheet.cover-page { padding: 0; background-color: #000; border: none; }
         .cover-image { width: 100%; height: 100%; object-fit: cover; }
 
+        /* DEDICATÓRIA */
         .page-sheet.back-cover {
             background-color: #1a120f;
             color: white;
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 80px;
         }
-        .dedication-title { font-family: 'Cinzel', serif; font-size: 2.8em; color: #c5a059; border-bottom: 1px solid #c5a059; margin-bottom: 50px; padding-bottom: 15px; }
-        .dedication-text { font-style: italic; font-size: 1.45em; line-height: 2; max-width: 650px; }
+        .page-sheet.back-cover::after { display: none; } /* Remove número da página */
+        
+        .dedication-title { 
+            font-family: 'Cinzel', serif; 
+            font-size: 2.8em; 
+            color: #c5a059; 
+            border-bottom: 1px solid #c5a059; 
+            margin-bottom: 60px; 
+            padding-bottom: 15px;
+            letter-spacing: 0.2em;
+        }
+        .dedication-text { 
+            font-style: italic; 
+            font-size: 1.1em; 
+            line-height: 2.2; 
+            max-width: 600px;
+            margin-bottom: 60px;
+        }
+        .dedication-footer-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9em;
+            letter-spacing: 0.3em;
+            color: #c5a059;
+            text-transform: uppercase;
+            margin-top: 20px;
+        }
 
         .manifesto-item { margin-bottom: 40px; }
         .manifesto-header { display: flex; align-items: center; gap: 25px; margin-bottom: 12px; }
@@ -441,7 +467,8 @@
                 <p style="margin-top: 40px;">"Ao meu filho e à minha filha, o meu legado mais valioso. Que estas páginas vos sirvam de prova que a soberania não se pede — constrói-se com verdade, limites e amor."</p>
                 <p style="margin-top: 40px;">"Tudo o que aqui está escrito, foi forjado para vós e por vós."</p>
             </div>
-            <div style="margin-top: 100px; font-family: 'Cinzel', serif; font-size: 1.7em; color: #c5a059;">A Vantagem Soberana</div>
+            <div class="dedication-footer-text">A Vantagem Soberana</div>
+            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
     </div>
 
