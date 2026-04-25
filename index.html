@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;700&family=Cinzel:wght@400;700&display=swap');
         
-        @page { size: A4; margin: 25mm; }
+        @page { size: A4; margin: 0; }
         body { 
             font-family: 'Lora', serif; 
             color: #2c3e50; 
@@ -139,7 +139,42 @@
             position: relative;
             z-index: 1;
         }
-        .cover { text-align: center; margin-top: 30vh; margin-bottom: 30vh; }
+        /* Cover Specifics */
+        .page-sheet.cover-page {
+            padding: 0;
+            overflow: hidden;
+            background-image: url('ebook_cover_background_1777087488438.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+        .cover-content {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 40%);
+            width: 100%;
+            padding: 80px 40px;
+            text-align: center;
+        }
+        .cover-title {
+            font-family: 'Cinzel', serif;
+            font-size: 4.5em;
+            color: #d4af37; /* Gold */
+            margin: 0;
+            line-height: 0.9;
+            letter-spacing: 0.05em;
+        }
+        .cover-subtitle {
+            font-family: 'Lora', serif;
+            font-size: 1.8em;
+            margin-top: 20px;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+        
         .toc { line-height: 2; }
     </style>
 </head>
@@ -147,9 +182,9 @@
     <div class="book-page">
         <!-- PAGE 1: COVER -->
         <div class="page-sheet cover-page">
-            <div class="cover">
-                <h1>THE SOVEREIGN EDGE</h1>
-                <h2 class="subtitle">Mastering Authority, Boundaries, and Results<br><br>A arte de liderar com soberania, autoridade e resultados inegáveis.</h2>
+            <div class="cover-content">
+                <h1 class="cover-title">A VANTAGEM SOBERANA</h1>
+                <h2 class="cover-subtitle">Dominando Autoridade, Limites e Resultados</h2>
             </div>
         </div>
 
