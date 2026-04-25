@@ -157,62 +157,15 @@
         
         .toc { line-height: 2; }
 
-        /* Page Footer Branding */
-        .page-footer {
-            position: absolute;
-            bottom: 40px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-            pointer-events: none;
-            opacity: 0.8;
-        }
-        .footer-crown {
-            height: 30px;
-            width: auto;
-            mix-blend-mode: multiply; /* Removes white background */
-            margin-bottom: 5px;
-        }
-        .footer-text-main {
-            font-family: 'Cinzel', serif;
-            font-size: 0.7em;
-            color: #8b6e3f;
-            letter-spacing: 0.1em;
-            font-weight: bold;
-        }
-        .footer-text-sub {
-            font-family: 'Lora', serif;
-            font-size: 0.5em;
-            color: #8b6e3f;
-            letter-spacing: 0.05em;
-            opacity: 0.8;
-        }
-        
-        /* Reposition page counter to not overlap with footer if needed */
-        .page-sheet::after {
-            content: counter(page-counter);
-            position: absolute;
-            bottom: 30px;
-            right: 30px;
-            font-family: 'Montserrat', sans-serif;
-            color: #8b6e3f;
-            font-size: 0.8em;
-            font-weight: bold;
-        }
-
         /* Dedication Page / Back Cover */
         .page-sheet.back-cover {
-            background: radial-gradient(circle, #2b231d 0%, #1c1917 100%);
+            background-color: #1a120f; /* Sampling the deepest brown/shadow from the cover */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 80px 100px;
-            color: #9c7c38; /* Harmonious antique gold */
+            color: #c5a059; /* A more harmonious, "antique" gold sampled from the cover title */
             text-align: center;
             min-height: 1000px;
         }
@@ -224,7 +177,7 @@
             font-size: 2.5em;
             letter-spacing: 0.3em;
             margin-bottom: 60px;
-            border-bottom: 1px solid #9c7c38;
+            border-bottom: 1px solid #c5a059;
             padding-bottom: 20px;
         }
         .dedication-text {
@@ -252,9 +205,7 @@
 
         <!-- PAGE 2: TOC -->
         <div class="page-sheet">
-            <div class="chapter-title"><span class="chapter-number">CONTEÚDO</span> O que você encontrará nesta jornada
-$footer
-</div>
+            <div class="chapter-title"><span class="chapter-number">CONTEÚDO</span> O que você encontrará nesta jornada</div>
             <div style="max-width: 500px; margin: 0 auto;">
                 <p style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; line-height: 2;">
                 Introdução | O Fim do "Ser Querida"<br>
@@ -272,18 +223,11 @@ $footer
                 Conclusão | O Manifesto da Mulher Soberana
                 </p>
             </div>
-            <div class="page-footer">
-                <img src="sovereign_crown_icon_1777089870063.png" class="footer-crown">
-                <div class="footer-text-main">A VANTAGEM SOBERANA</div>
-                <div class="footer-text-sub">Dominando Autoridade, Limites e Resultados</div>
-            </div>
         </div>
 
         <!-- PAGE 3: INTRO -->
         <div class="page-sheet">
-            <div class="chapter-title"><span class="chapter-number">INTRODUÇÃO</span> O Fim do Ser Querida
-$footer
-</div>
+            <div class="chapter-title"><span class="chapter-number">INTRODUÇÃO</span> O Fim do Ser Querida</div>
             <p>Durante muito tempo, foi-nos vendido um mito poderoso: a ideia de que o sucesso feminino é uma equação de competência somada a uma personalidade agradável. Crescemos ouvindo que precisamos ser gentis, acessíveis, colaborativas — sempre dispostas a agradar. Que uma mulher de sucesso é aquela que consegue ser competente sem intimidar, assertiva sem assustar, inteligente sem ameaçar.</p>
             <p>Este mito foi construído com cuidado e perpetuado com consistência. Ele aparece nas avaliações de desempenho que elogiam a competência técnica, mas sugerem que a profissional poderia ser um pouco mais acessível. Aparece nas salas de reunião onde a voz feminina é interrompida, mas a mulher é orientada a comunicar melhor. Aparece nas conversas de corredor que descrevem uma líder eficaz como difícil simplesmente porque ela mantém padrões elevados.</p>
             <p>A verdade, observada nos altos escalões da liderança ao redor do mundo, é fundamentalmente diferente:</p>
@@ -300,9 +244,7 @@ $footer
         </div>
 
         <div class="page-sheet">
-            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 1</span> O Paradoxo da Respeitabilidade
-$footer
-</div>
+            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 1</span> O Paradoxo da Respeitabilidade</div>
             <p>Existe uma crença profundamente enraizada no imaginário coletivo sobre liderança feminina: a ideia de que respeito é uma recompensa pela diplomacia. Que se você for suficientemente gentil, suficientemente cuidadosa com as palavras, suficientemente atenta às necessidades dos outros, as pessoas naturalmente passarão a te respeitar.</p>
             <p>Esta crença não é apenas falsa — ela é ativamente prejudicial.</p>
             
@@ -333,9 +275,7 @@ $footer
         </div>
 
         <div class="page-sheet">
-            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 2</span> A Ciência da Consistência
-$footer
-</div>
+            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 2</span> A Ciência da Consistência</div>
             <p>Se há um único princípio que unifica todos os outros neste livro, é este: consistência é mais poderosa do que qualquer talento, carisma, ou conexão que você possa ter. A consistência é o multiplicador silencioso que transforma competência em autoridade, intenção em resultado, e promessa em reputação.</p>
             
             <h3>A Conta de Autoridade</h3>
@@ -372,9 +312,7 @@ $footer
         </div>
 
         <div class="page-sheet">
-            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 3</span> O Princípio da Ausência de Desculpas
-$footer
-</div>
+            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 3</span> O Princípio da Ausência de Desculpas</div>
             <p>Existe uma diferença fundamental entre explicar e justificar. Explicar é fornecer contexto relevante para que decisões futuras sejam tomadas com mais informação. Justificar é construir um caso de defesa para proteger sua identidade de uma percepção de fracasso.</p>
             <p>A anatomia da justificativa é a antítese da liderança. E ela é insidiosamente sedutora, porque parece razoável - parece até responsável - examinar em detalhe por que algo não funcionou.</p>
             
@@ -399,9 +337,7 @@ $footer
         </div>
 
         <div class="page-sheet">
-            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 4</span> O No-Fly Zone
-$footer
-</div>
+            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 4</span> O No-Fly Zone</div>
             <p>O que você não tolera define quem você é com mais precisão do que aquilo que você valoriza. Valores são fáceis de declarar em momentos de facilidade. O que você não tolera - e efetivamente não tolera, com consequências reais - define o contorno real do seu caráter profissional.</p>
             <p>O conceito do No-Fly Zone é simples: há comportamentos que são absolutamente incompatíveis com o ambiente que você está construindo. Não são preferências. Não são sugestões. São limites inegociáveis, comunicados com clareza, e aplicados com consistência.</p>
             
@@ -427,9 +363,7 @@ $footer
         </div>
 
         <div class="page-sheet">
-            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 5</span> O Custo de Manter o Peso Morto
-$footer
-</div>
+            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 5</span> O Custo de Manter o Peso Morto</div>
             <p>Toda decisão de manter tem um custo de oportunidade. Quando você mantém pessoas, projetos, ou situações que drenam sua energia sem retornar valor proporcional, você está fazendo uma escolha - e essa escolha tem um preço que raramente é calculado com honestidade.</p>
             <p>O peso morto raramente se apresenta como óbvio. Ele se camufla de lealdade, de esperança, de obrigação social, de "quem sabe mude". A mulher soberana desenvolve a capacidade de ver através dessas camuflagens e identificar o que verdadeiramente merece sua energia - e o que não merece.</p>
             
@@ -453,9 +387,7 @@ $footer
         </div>
 
         <div class="page-sheet">
-            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 6</span> O Poder da Recusa
-$footer
-</div>
+            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 6</span> O Poder da Recusa</div>
             <p>Existe uma habilidade que transforma completamente a trajetória profissional de qualquer pessoa que a desenvolve com maestria. Ela não é ensinada nas universidades. Raramente é discutida nos treinamentos corporativos. E é sistematicamente desestimulada em mulheres desde a infância.</p>
             <p>Essa habilidade é dizer não.</p>
             <p>Não o não tímido, repleto de desculpas e explicações. O não claro, firme, e sereno de alguém que sabe exatamente o que sua energia vale e escolhe deliberadamente onde investi-la.</p>
@@ -480,9 +412,7 @@ $footer
         </div>
 
         <div class="page-sheet">
-            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 7</span> O Monopólio da Competência
-$footer
-</div>
+            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 7</span> O Monopólio da Competência</div>
             <p>Em um mundo onde informação é abundante e acesso ao conhecimento é praticamente universal, o que realmente diferencia profissionais não é o quanto elas sabem - é o quanto elas conseguem fazer com o que sabem. A execução impecável em uma área específica se tornou o diferencial mais valioso e mais raro do mercado.</p>
             <p>A mulher soberana não tenta ser boa em tudo. Ela se torna indispensável em algo específico. Ela constrói um monopólio de competência que ninguém pode replicar facilmente - porque monopólios de competência são construídos através de anos de prática deliberada, não através de cursos online.</p>
             
@@ -509,9 +439,7 @@ $footer
         </div>
 
         <div class="page-sheet">
-            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 8</span> KPIs de Vida
-$footer
-</div>
+            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 8</span> KPIs de Vida</div>
             <p>Se você não consegue medir o seu progresso, você não tem uma estratégia - você tem um desejo. E desejos sem métricas são apenas intenções que nunca chegam a lugar nenhum.</p>
             <p>A mulher soberana aplica o mesmo rigor analítico que usa para avaliar resultados de negócios à avaliação do seu próprio desenvolvimento. Ela não se contenta com a sensação subjetiva de que as coisas estão indo bem. Ela define métricas claras, revisa com honestidade, e ajusta com base em dados reais.</p>
             
@@ -549,9 +477,7 @@ $footer
         </div>
 
         <div class="page-sheet">
-            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 9</span> O Campo de Treinamento da Vida Real
-$footer
-</div>
+            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 9</span> O Campo de Treinamento da Vida Real</div>
             <p>Há uma diferença fundamental entre conhecer um princípio e vivê-lo. Entre entender intelectualmente que você deveria manter um limite e de fato mantê-lo quando alguém que você respeita está pressionando pela exceção. Entre saber que deveria falar com convicção e de fato falar assim quando sua voz está tremendo por dentro.</p>
             <p>Esta diferença chama-se prática. E a única arena onde ela acontece é a vida real.</p>
             
@@ -572,9 +498,7 @@ $footer
         </div>
 
         <div class="page-sheet">
-            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 10</span> O Ecossistema de Elite
-$footer
-</div>
+            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 10</span> O Ecossistema de Elite</div>
             <p>Existe uma lei não escrita de desenvolvimento humano que poucas pessoas levam suficientemente a sério: você é, em grande medida, o resultado médio das pessoas com quem passa mais tempo. Suas referências, sua linguagem de possibilidade, seu patamar de exigência, sua concepção do que é normal - tudo isso é profundamente moldado pelo ecossistema humano em que você está inserida.</p>
             <p>Compreender isso não é elitismo. É pragmatismo fundamental.</p>
             
@@ -602,9 +526,7 @@ $footer
         </div>
 
         <div class="page-sheet">
-            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 11</span> A Ação Silenciosa
-$footer
-</div>
+            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 11</span> A Ação Silenciosa</div>
             <p>Vivemos em uma era de autopromoção constante. Redes sociais criaram um palco permanente onde cada conquista pode ser transmitida, cada insight pode ser amplificado, cada movimento pode ser documentado e compartilhado. E em muitos ambientes profissionais, a visibilidade passou a ser confundida com valor real.</p>
             <p>A mulher soberana entende a diferença entre os dois - e faz uma escolha muito diferente da maioria.</p>
             
@@ -630,9 +552,7 @@ $footer
         </div>
 
         <div class="page-sheet">
-            <div class="chapter-title"><span class="chapter-number">CONCLUSÃO</span> O Manifesto da Mulher Soberana
-$footer
-</div>
+            <div class="chapter-title"><span class="chapter-number">CONCLUSÃO</span> O Manifesto da Mulher Soberana</div>
             <p>Você chegou ao fim deste livro. Mas chegou, na verdade, ao início de algo. Porque soberania não é um estado que se alcança lendo um livro - é uma prática que se constrói vivendo cada princípio descrito aqui, dia após dia, em cada decisão, em cada interação, em cada momento de escolha entre o que é conveniente e o que é verdadeiro.</p>
             <p>Este é o manifesto da mulher soberana. Não é uma declaração de chegada - é uma declaração de comprometimento com um caminho.</p>
             
@@ -734,7 +654,7 @@ $footer
                 <p>"Ao meu filho e à minha filha, o meu legado mais valioso. Que estas páginas vos sirvam de prova que a soberania não se pede — constrói-se com verdade, limites e amor."</p>
                 <p>"Tudo o que aqui está escrito, foi forjado para vós e por vós."</p>
             </div>
-            <div class="dedication-footer" style="color: #9c7c38; opacity: 0.6;">A Vantagem Soberana</div>
+            <div class="dedication-footer">A Vantagem Soberana</div>
         </div>
     </div> <!-- END BOOK -->
 </body>
