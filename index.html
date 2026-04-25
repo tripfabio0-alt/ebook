@@ -50,8 +50,27 @@
             font-weight: bold;
         }
 
-        /* Hide numbering on first page (Cover) */
-        .page-sheet.cover-page::after {
+        /* Page Footer Logo */
+        .page-sheet::before {
+            content: "";
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 50px;
+            background-image: url('logo_traduzido.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.7;
+        }
+
+        /* Hide footer elements on cover and back cover */
+        .page-sheet.cover-page::after,
+        .page-sheet.cover-page::before,
+        .page-sheet.back-cover::after,
+        .page-sheet.back-cover::before {
             display: none;
         }
 
