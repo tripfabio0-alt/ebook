@@ -6,6 +6,12 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;700&family=Cinzel:wght@400;700&display=swap');
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         @page {
             size: A5;
             margin: 15mm;
@@ -17,32 +23,31 @@
             line-height: 1.7;
             font-size: 13pt;
             background: radial-gradient(circle, #2c343f 0%, #0f141a 100%);
-            margin: 0;
-            padding: 60px 0;
+            padding: 40px 20px;
             min-height: 100vh;
             counter-reset: page-counter;
         }
 
         .book-page {
-            max-width: 850px;
-            width: 90%;
+            max-width: 148mm;
+            width: 100%;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 40px;
-            /* Sensation of break between pages */
+            gap: 30px;
         }
 
         .page-sheet {
             background-color: #fdfbf7;
-            padding: 80px 100px 180px 100px;
-            /* Increased bottom padding for the even larger logo */
+            padding: 80px 60px 140px 60px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             border-radius: 2px;
             position: relative;
             border: 1px solid rgba(0, 0, 0, 0.05);
-            min-height: 1000px;
+            min-height: 210mm;
             counter-increment: page-counter;
+            page-break-after: always;
+            page-break-inside: avoid;
         }
 
         /* Page numbering */
@@ -344,64 +349,49 @@
         }
 
         @media print {
-            html, body { 
+            body {
                 background: white !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
                 padding: 0 !important;
-                margin: 0 !important;
-            }
-            .book-page { 
-                width: 100% !important;
-                max-width: none !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                display: block !important;
-                gap: 0 !important;
-            }
-            .page-sheet {
-                display: block !important;
-                background-color: #fdfbf7 !important;
-                padding: 40px !important; /* Reduced padding for A5 */
-                min-height: 0 !important;
-                height: auto !important;
-                page-break-after: always !important;
-                page-break-inside: avoid !important;
-                box-shadow: none !important;
-                border: none !important;
-                position: relative !important;
                 margin: 0 !important;
             }
             
-            .page-sheet::after {
-                bottom: 10px !important;
-                right: 10px !important;
-            }
-            .page-sheet::before {
-                bottom: 5px !important;
-                width: 200px !important; /* Smaller logo for A5 */
-                height: 80px !important;
+            .book-page {
+                box-shadow: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                max-width: 148mm !important;
+                width: 148mm !important;
             }
 
-            .page-sheet.cover-page {
-                padding: 0 !important;
-                height: auto !important;
+            .page-sheet {
+                box-shadow: none !important;
+                border: none !important;
+                margin: 0 !important;
+                padding: 15mm !important; /* Respeita a margem do guia */
+                width: 148mm !important;
+                height: 210mm !important;
+                page-break-after: always !important;
+                page-break-inside: avoid !important;
+                background-color: white !important;
+                -webkit-print-color-adjust: exact !important;
             }
-            .cover-image {
-                width: 100% !important;
-                height: auto !important;
-            }
-            
-            .page-sheet.back-cover {
-                background-color: #1a120f !important;
-                color: white !important;
-                min-height: 140mm !important;
+
+            .page-sheet::after, .page-sheet::before {
                 display: block !important;
-                padding: 40px !important;
+            }
+
+            .cover-image {
+                width: 148mm !important;
+                height: 210mm !important;
+                object-fit: cover !important;
             }
             
             #download-btn {
                 display: none !important;
+            }
+
+            h1, h2, h3, img, table {
+                page-break-inside: avoid !important;
             }
         }
     </style>
