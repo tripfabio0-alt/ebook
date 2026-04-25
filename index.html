@@ -78,9 +78,10 @@
             display: none; /* No page number */
         }
         .page-sheet.back-cover::before {
+            background-image: url('logo_dark.png'); /* Specially generated for dark background */
             opacity: 1;
-            mix-blend-mode: lighten; /* Ensures gold logo pops on dark brown */
-            filter: brightness(1.2);
+            mix-blend-mode: normal; /* Background matches exactly */
+            filter: none;
         }
 
         /* Responsive adjustments */
@@ -205,9 +206,9 @@
             font-size: 2.5em;
             letter-spacing: 0.3em;
             margin-bottom: 60px;
-            border-bottom: 1px solid white;
+            border-bottom: 1px solid #c5a059;
             padding-bottom: 20px;
-            color: white;
+            color: #c5a059;
         }
         .dedication-text {
             font-family: 'Lora', serif;
