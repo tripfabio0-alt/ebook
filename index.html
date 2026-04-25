@@ -30,8 +30,7 @@
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 40px;
-            /* Sensation of break between pages */
+            gap: 0; /* Removed gap to prevent blank pages in PDF */
         }
 
         .page-sheet {
@@ -42,7 +41,10 @@
             border-radius: 2px;
             position: relative;
             border: 1px solid rgba(0, 0, 0, 0.05);
-            min-height: 1000px;
+            height: 297mm; /* Exact A4 height */
+            width: 210mm; /* Exact A4 width */
+            margin: 0 auto 40px auto; /* Margin for screen spacing */
+            box-sizing: border-box;
             counter-increment: page-counter;
         }
 
@@ -350,29 +352,26 @@
                 padding: 0 !important; 
                 margin: 0 !important;
                 height: auto !important;
-                width: 100% !important;
             }
             .book-page { 
                 width: 100% !important; 
                 max-width: none !important; 
                 margin: 0 !important; 
                 gap: 0 !important;
-                display: block !important; /* Avoid flex issues in print */
+                display: block !important;
             }
             .page-sheet {
                 box-shadow: none !important;
                 border: none !important;
-                margin: 0 !important;
-                padding: 60px 80px 140px 80px !important; /* Controlled padding for PDF */
+                margin: 0 !important; /* Remove margin in PDF */
+                padding: 60px 80px 140px 80px !important;
                 page-break-after: always;
                 page-break-inside: avoid;
-                height: 297mm !important; /* Force exact A4 height */
-                width: 210mm !important; /* Force exact A4 width */
+                height: 297mm !important;
+                width: 210mm !important;
                 position: relative !important;
                 box-sizing: border-box !important;
                 background-color: #fdfbf7 !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
             }
             .page-sheet.cover-page {
                 padding: 0 !important;
@@ -385,11 +384,6 @@
             }
             #download-btn {
                 display: none !important;
-            }
-            /* Hide UI elements */
-            .page-sheet::before, .page-sheet::after {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
             }
         }
     </style>
