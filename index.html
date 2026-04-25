@@ -16,7 +16,7 @@
             font-family: 'Lora', serif;
             color: #2c3e50;
             line-height: 1.75;
-            font-size: 16.2pt; /* Otimizado para preencher as páginas de forma elegante */
+            font-size: 16.2pt;
             background: radial-gradient(circle, #2c343f 0%, #0f141a 100%);
             padding: 50px 0;
             min-height: 100vh;
@@ -35,7 +35,7 @@
             background-color: #fdfbf7;
             width: 850px;
             height: 1202px;
-            padding: 80px 90px 170px 90px; /* Rodapé de 170px garantido para a coroa */
+            padding: 80px 90px 170px 90px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
             position: relative;
             counter-increment: page-counter;
@@ -67,11 +67,27 @@
             align-items: center;
             z-index: 100;
         }
+
+        /* 
+           FIX TRANSPARÊNCIA: 
+           Como o html2canvas ignora filtros SVG em capturas, 
+           usaremos mix-blend-mode para visualização e um script JS 
+           para converter a imagem em uma versão transparente real para o PDF.
+        */
         .footer-logo-img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            filter: url(#remove-white) contrast(1.1);
+        }
+        
+        /* Em páginas claras, usamos multiply para sumir com o branco */
+        .page-sheet:not(.back-cover) .footer-logo-img {
+            mix-blend-mode: multiply;
+        }
+        /* Em páginas escuras, usamos screen para sumir com o preto (mas nossa logo tem fundo branco, então usaremos um processador JS) */
+        .page-sheet.back-cover .footer-logo-img {
+            mix-blend-mode: screen; 
+            filter: invert(1); /* Inverte para que o branco vire preto e suma no screen */
         }
 
         .page-sheet.cover-page .page-footer-logo-container { display: none; }
@@ -104,6 +120,7 @@
             line-height: 1.6;
         }
 
+        /* FIX: IMAGENS ESPICHADAS NO PDF */
         .chapter-image-container {
             width: 100%;
             height: 620px;
@@ -111,13 +128,15 @@
             overflow: hidden;
             border-radius: 4px;
             box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+            /* html2canvas renderiza melhor background-image que img object-fit */
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
         }
-        .chapter-image { width: 100%; height: 100%; object-fit: cover; }
 
         .page-sheet.cover-page { padding: 0; background-color: #000; border: none; }
         .cover-image { width: 100%; height: 100%; object-fit: cover; }
 
-        /* DEDICATÓRIA */
         .page-sheet.back-cover {
             background-color: #1a120f;
             color: white;
@@ -126,7 +145,7 @@
             text-align: center;
             padding: 80px;
         }
-        .page-sheet.back-cover::after { display: none; } /* Remove número da página */
+        .page-sheet.back-cover::after { display: none; }
         
         .dedication-title { 
             font-family: 'Cinzel', serif; 
@@ -170,16 +189,6 @@
 </head>
 
 <body>
-    <!-- FILTRO SVG -->
-    <svg style="position: absolute; width: 0; height: 0; pointer-events: none;">
-        <filter id="remove-white">
-            <feColorMatrix type="matrix" values="1 0 0 0 0
-                                                 0 1 0 0 0
-                                                 0 0 1 0 0
-                                                 -1.5 -1.5 -1.5 4.5 0" />
-        </filter>
-    </svg>
-
     <div class="book-page">
         <!-- CAPA -->
         <div class="page-sheet cover-page">
@@ -234,20 +243,19 @@
         <!-- CAPÍTULO 1 -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 1</span> O Paradoxo da Respeitabilidade</div>
-            <div class="chapter-image-container">
-                <img src="paradox_respectability_v2_minimalist_1777140504590.png" class="chapter-image">
-            </div>
+            <div class="chapter-image-container" style="background-image: url('paradox_respectability_v2_minimalist_1777140504590.png');"></div>
             <p>Existe uma crença profundamente enraizada no imaginário coletivo sobre liderança feminina: a ideia de que respeito é uma recompensa pela diplomacia. Que se você for suficientemente gentil, suficientemente cuidadosa com as palavras, suficientemente atenta às necessidades dos outros, as pessoas naturalmente passarão a te respeitar.</p>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
         <div class="page-sheet">
             <p>Esta crença não é apenas falsa — ela é ativamente prejudicial. Quando você busca aprovação, você posiciona-se inconscientemente como alguém que precisa de validação externa para confirmar seu valor. Esse posicionamento cria uma dinâmica de poder clara: você em posição de peticionante, os outros em posição de julgadores.</p>
-            <p>Observe como isso se manifesta no dia a dia corporativo: você termina uma apresentação e observa as expressões dos presentes para avaliar se foi bem; você envia um e-mail com uma posição firme e depois começa a se perguntar se foi direta demais; você toma uma decisão impopular, mas necessária, e depois passa horas tentando suavizar as arestas. Em cada um desses momentos, você está transferindo poder. Você está dizendo, com suas ações: Meu valor depende da sua aprovação.</p>
+            <p>Observe como isso se manifesta no dia a dia corporativo: você termina uma apresentação e observa as expressões dos presentes para avaliar se foi bem; você envia um e-mail com uma posição firme e depois começa a se perguntar se foi direta demais; você toma uma decisão impopular, mas necessária, e depois passa horas tentando suavizar as arestas. Em cada um desses momentos, você está transferindo poder.</p>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
         <div class="page-sheet">
+            <p>Você está dizendo, com suas ações: Meu valor depende da sua aprovação.</p>
             <h3>Aprovação vs. Autoridade</h3>
             <p>O paradoxo central é este: a busca por aprovação produz o oposto do que se busca. Quando você persegue aprovação, você demonstra que precisa dela. E pessoas que precisam de aprovação raramente inspiram respeito genuíno — inspiram, no máximo, afeto condescendente.</p>
             <div class="quote">"Se você busca aprovação, você pede validação. Se você estabelece padrões, você comanda respeito."</div>
@@ -266,9 +274,7 @@
         <!-- CAPÍTULO 2 -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 2</span> A Ciência da Consistência</div>
-            <div class="chapter-image-container">
-                <img src="science_consistency_macro_1777140072785.png" class="chapter-image">
-            </div>
+            <div class="chapter-image-container" style="background-image: url('science_consistency_macro_1777140072785.png');"></div>
             <p>Se há um único princípio que unifica todos os outros neste livro, é este: consistência é mais poderosa do que qualquer talento, carisma, ou conexão que você possa ter. A consistência é o multiplicador silencioso que transforma competência em autoridade, intenção em resultado, e promessa em reputação.</p>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
@@ -307,10 +313,8 @@
         <!-- CAPÍTULO 4 -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 4</span> O No-Fly Zone</div>
-            <div class="chapter-image-container">
-                <img src="power_of_refusal_stop_1777140089122.png" class="chapter-image">
-            </div>
-            <p>O que você não tolera define quem você é com mais precisão do que aquilo que você valoriza. O conceito do No-Fly Zone são comportamentos inegociáveis. Pessoas com limites claros são as mais fáceis de trabalhar, porque as regras do jogo são conhecidas. A ambiguidade é o verdadeiro gerador de conflito. Quando os limites estão claros, a energia pode ser direcionada para o trabalho.</p>
+            <div class="chapter-image-container" style="background-image: url('power_of_refusal_stop_1777140089122.png');"></div>
+            <p>O que você não tolera define quem você é com mais precisão do que aquilo que você valoriza. O conceito do No-Fly Zone são comportamentos inegociáveis. Pessoas com limites claros são as mais fáceis de trabalhar, because as regras do jogo são conhecidas. A ambiguidade é o verdadeiro gerador de conflito. Quando os limites estão claros, a energia pode ser direcionada para o trabalho.</p>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
@@ -393,21 +397,19 @@
         <!-- CONCLUSÃO -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CONCLUSÃO</span> Manifesto Soberana</div>
-            <div class="chapter-image-container">
-                <img src="silent_action_architect_1777140103901.png" class="chapter-image">
-            </div>
+            <div class="chapter-image-container" style="background-image: url('silent_action_architect_1777140103901.png');"></div>
             <div class="manifesto-item">
                 <div class="manifesto-header"><div class="manifesto-num">01</div><h3 class="manifesto-title">Arquitetura de Ambiente</h3></div>
                 <p>Eu sou a arquiteta do meu ambiente. Reconfiguro pessoas e rituais para que sirvam aos meus objetivos estratégicos.</p>
-            </div>
-            <div class="manifesto-item">
-                <div class="manifesto-header"><div class="manifesto-num">02</div><h3 class="manifesto-title">Detentora de Resultados</h3></div>
-                <p>Eu sou a detentora dos meus resultados. Não transfiro responsabilidade nem distribuo culpa.</p>
             </div>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
         <div class="page-sheet">
+            <div class="manifesto-item">
+                <div class="manifesto-header"><div class="manifesto-num">02</div><h3 class="manifesto-title">Detentora de Resultados</h3></div>
+                <p>Eu sou a detentora dos meus resultados. Não transfiro responsabilidade nem distribuo culpa.</p>
+            </div>
             <div class="manifesto-item">
                 <div class="manifesto-header"><div class="manifesto-num">03</div><h3 class="manifesto-title">Padrões sobre Aprovação</h3></div>
                 <p>Eu estabeleço padrões, não busco aprovação. Prefiro ser respeitada a ser querida quando estas coisas estão em conflito.</p>
@@ -416,14 +418,14 @@
                 <div class="manifesto-header"><div class="manifesto-num">04</div><h3 class="manifesto-title">Proteção e Soberania</h3></div>
                 <p>Meus limites são proteções inegociáveis. O No-Fly Zone garante um espaço onde a excelência pode florescer plenamente.</p>
             </div>
-            <div class="manifesto-item">
-                <div class="manifesto-header"><div class="manifesto-num">05</div><h3 class="manifesto-title">Tempo e Estratégia</h3></div>
-                <p>Meu tempo é estratégico. Cada não é um ato de cuidado com minha missão e minha energia.</p>
-            </div>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
         <div class="page-sheet">
+            <div class="manifesto-item">
+                <div class="manifesto-header"><div class="manifesto-num">05</div><h3 class="manifesto-title">Tempo e Estratégia</h3></div>
+                <p>Meu tempo é estratégico. Cada não é um ato de cuidado com minha missão e minha energia.</p>
+            </div>
             <div class="manifesto-item">
                 <div class="manifesto-header"><div class="manifesto-num">06</div><h3 class="manifesto-title">A Busca pela Maestria</h3></div>
                 <p>Eu construo maestria, não versatilidade. Escolho a profundidade e invisto em um monopólio de competência irreplicável.</p>
@@ -432,14 +434,14 @@
                 <div class="manifesto-header"><div class="manifesto-num">07</div><h3 class="manifesto-title">O Rigor dos Dados</h3></div>
                 <p>Eu meço para crescer. Reviso com honestidade brutal e ajusto com base no que os dados reais mostram.</p>
             </div>
-            <div class="manifesto-item">
-                <div class="manifesto-header"><div class="manifesto-num">08</div><h3 class="manifesto-title">A Arena da Vida Real</h3></div>
-                <p>Eu ajo no campo real. Entro no ringue das reuniões difíceis sabendo que é ali que a maestria é construída.</p>
-            </div>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
         <div class="page-sheet">
+            <div class="manifesto-item">
+                <div class="manifesto-header"><div class="manifesto-num">08</div><h3 class="manifesto-title">A Arena da Vida Real</h3></div>
+                <p>Eu ajo no campo real. Entro no ringue das reuniões difíceis sabendo que é ali que a maestria é construída.</p>
+            </div>
             <div class="manifesto-item">
                 <div class="manifesto-header"><div class="manifesto-num">09</div><h3 class="manifesto-title">Ecossistema Elevado</h3></div>
                 <p>Meu ecossistema me eleva. Sou intencional sobre quem tem acesso à minha energia. Construo relações que me expandem.</p>
@@ -448,12 +450,11 @@
                 <div class="manifesto-header"><div class="manifesto-num">10</div><h3 class="manifesto-title">O Silêncio Produtivo</h3></div>
                 <p>Eu entrego, não anuncio. Deixo que meus resultados falem por mim, sem a necessidade de validação constante.</p>
             </div>
-            <div class="quote" style="margin-top: 30px;">"Soberania é a escolha diária de ser inteiramente quem você é."</div>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- FINAL -->
         <div class="page-sheet">
+            <div class="quote" style="margin-top: 50px;">"Soberania é a escolha diária de ser inteiramente quem você é."</div>
             <p style="margin-top: 80px;">Você não é o resultado do que os outros esperam de você. Você é o resultado do que você constrói - com consistência, com limites, com maestria, e com a coragem de seguir em frente mesmo quando o caminho não é linear.</p>
             <h2 style="text-align: center; margin-top: 100px; letter-spacing: 0.3em; font-size: 2.3em;">A SOBERANIA COMEÇA AGORA.</h2>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
@@ -478,6 +479,40 @@
     </button>
 
     <script>
+        /* 
+           FUNÇÃO PARA LIMPAR O BRANCO DA LOGO NO CANVAS (PARA O PDF)
+           Esta função percorre os pixels da imagem e torna transparentes os pixels brancos.
+        */
+        function cleanLogoTransparency(imgElement) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = imgElement.naturalWidth;
+            canvas.height = imgElement.naturalHeight;
+            ctx.drawImage(imgElement, 0, 0);
+            
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const data = imageData.data;
+            
+            for (let i = 0; i < data.length; i += 4) {
+                // Se o pixel for muito claro (perto de branco), tornamos transparente
+                if (data[i] > 220 && data[i+1] > 220 && data[i+2] > 220) {
+                    data[i+3] = 0;
+                }
+            }
+            ctx.putImageData(imageData, 0, 0);
+            imgElement.src = canvas.toDataURL();
+            imgElement.style.mixBlendMode = 'normal'; // Remove o blend pois agora é transparente real
+            imgElement.style.filter = 'none';
+        }
+
+        // Executa a limpeza quando as logos carregarem
+        window.onload = () => {
+            document.querySelectorAll('.footer-logo-img').forEach(img => {
+                if (img.complete) cleanLogoTransparency(img);
+                else img.onload = () => cleanLogoTransparency(img);
+            });
+        };
+
         async function generatePDF() {
             const btn = document.getElementById('download-btn');
             const originalText = btn.innerHTML;
@@ -486,26 +521,42 @@
 
             try {
                 const pages = document.querySelectorAll('.page-sheet');
+                // PDF de alta resolução
                 const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
 
                 for (let i = 0; i < pages.length; i++) {
                     btn.innerHTML = `Gerando página ${i + 1} de ${pages.length}...`;
+                    
+                    // html2canvas com configurações para evitar distorção e manter transparência
                     const canvas = await html2canvas(pages[i], {
-                        scale: 2.5,
+                        scale: 3, // Aumentado para 3 para nitidez máxima
                         useCORS: true,
-                        backgroundColor: '#fdfbf7',
+                        backgroundColor: null, // Mantém transparência se houver
                         width: 850,
                         height: 1202,
-                        logging: false
+                        windowWidth: 850, // Força a largura da janela para o cálculo do layout
+                        windowHeight: 1202,
+                        logging: false,
+                        onclone: (clonedDoc) => {
+                           // Garante que as imagens no clone não tenham distorção
+                           const clonedImages = clonedDoc.querySelectorAll('.chapter-image-container');
+                           clonedImages.forEach(img => {
+                               img.style.objectFit = 'cover';
+                           });
+                        }
                     });
-                    const imgData = canvas.toDataURL('image/jpeg', 0.95);
+                    
+                    // Usamos PNG para manter a transparência da logo processada no PDF
+                    const imgData = canvas.toDataURL('image/png');
                     if (i > 0) pdf.addPage();
-                    pdf.addImage(imgData, 'JPEG', 0, 0, 210, 297);
+                    
+                    // Ajuste preciso para evitar "espichamento" (210x297mm é o padrão A4)
+                    pdf.addImage(imgData, 'PNG', 0, 0, 210, 297, undefined, 'FAST');
                 }
-                pdf.save('A_Vantagem_Soberana_Premium.pdf');
+                pdf.save('A_Vantagem_Soberana_Elite.pdf');
             } catch (error) {
                 console.error(error);
-                alert('Erro ao gerar PDF.');
+                alert('Erro ao gerar PDF. Verifique o console.');
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = originalText;
