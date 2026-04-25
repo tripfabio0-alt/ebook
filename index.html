@@ -10,11 +10,30 @@
             font-family: 'Lora', serif; 
             color: #2c3e50; 
             line-height: 1.7; 
-            font-size: 12pt; 
+            font-size: 13pt; 
+            background: radial-gradient(circle, #2c343f 0%, #0f141a 100%);
+            margin: 0;
+            padding: 40px 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .book-page {
             background-color: #fdfbf7;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            max-width: 850px;
+            width: 90%;
+            padding: 80px 100px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5), 0 0 20px rgba(0,0,0,0.3);
+            border-radius: 2px;
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .book-page { padding: 40px 30px; }
+            body { padding: 0; }
         }
         h1, h2, h3, h4 { 
             font-family: 'Montserrat', sans-serif; 
@@ -86,7 +105,7 @@
     </style>
 </head>
 <body>
-
+    <div class="book-page">
     <div class="cover">
         <h1>THE SOVEREIGN EDGE</h1>
         <h2 class="subtitle">Mastering Authority, Boundaries, and Results<br><br>A arte de liderar com soberania, autoridade e resultados inegáveis.</h2>
@@ -498,6 +517,6 @@
     <p style="text-align: center; margin-top: 40px;">Você não é o resultado do que os outros esperam de você. Você é o resultado do que você constrói - com consistência, com limites, com maestria, e com a coragem de seguir em frente mesmo quando o caminho não é linear.</p>
     
     <h2 style="text-align: center; color: #8b6e3f; margin-top: 50px; font-family: 'Montserrat', sans-serif; letter-spacing: 0.2em;">A SOBERANIA COMEÇA AGORA.</h2>
-
+    </div>
 </body>
 </html>
