@@ -177,6 +177,31 @@
         .manifesto-num { font-size: 5em; color: #8b6e3f; opacity: 0.15; font-weight: bold; line-height: 1; min-width: 100px; }
         .manifesto-title { font-size: 1.5em; margin: 0; color: #8b6e3f; }
 
+        #language-switcher {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            display: flex;
+            gap: 10px;
+            z-index: 10000;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 110, 63, 0.3);
+            color: #c5a059;
+            padding: 10px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover { background: #8b6e3f; color: white; transform: translateY(-3px); }
+        .lang-btn.active { background: #8b6e3f; color: white; border-color: #8b6e3f; }
+
         #download-btn {
             position: fixed; bottom: 30px; right: 30px;
             background: linear-gradient(135deg, #8b6e3f 0%, #5d482c 100%);
@@ -189,6 +214,11 @@
 </head>
 
 <body>
+    <div id="language-switcher">
+        <button class="lang-btn active" onclick="window.location.href='index.html'">PT</button>
+        <button class="lang-btn" onclick="window.location.href='espanol.html'">ES</button>
+        <button class="lang-btn" onclick="window.location.href='english.html'">EN</button>
+    </div>
     <div class="book-page">
         <!-- CAPA -->
         <div class="page-sheet cover-page">
