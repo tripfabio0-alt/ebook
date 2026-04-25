@@ -143,36 +143,16 @@
         .page-sheet.cover-page {
             padding: 0;
             overflow: hidden;
-            background-image: url('ebook_cover_background_1777087488438.png');
-            background-size: cover;
-            background-position: center;
+            background-color: #000;
             display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
-            color: white;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
-        .cover-content {
-            background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 40%);
+        .cover-image {
             width: 100%;
-            padding: 80px 40px;
-            text-align: center;
-        }
-        .cover-title {
-            font-family: 'Cinzel', serif;
-            font-size: 4.5em;
-            color: #d4af37; /* Gold */
-            margin: 0;
-            line-height: 0.9;
-            letter-spacing: 0.05em;
-        }
-        .cover-subtitle {
-            font-family: 'Lora', serif;
-            font-size: 1.8em;
-            margin-top: 20px;
-            font-weight: 400;
-            letter-spacing: 0.02em;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
         
         .toc { line-height: 2; }
@@ -182,10 +162,7 @@
     <div class="book-page">
         <!-- PAGE 1: COVER -->
         <div class="page-sheet cover-page">
-            <div class="cover-content">
-                <h1 class="cover-title">A VANTAGEM SOBERANA</h1>
-                <h2 class="cover-subtitle">Dominando Autoridade, Limites e Resultados</h2>
-            </div>
+            <img src="ebook_cover_high_res.png" alt="A Vantagem Soberana" class="cover-image">
         </div>
 
         <!-- PAGE 2: TOC -->
