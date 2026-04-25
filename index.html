@@ -344,27 +344,61 @@
         }
 
         @media print {
-            body { 
+            html, body { 
                 background: white !important; 
                 padding: 0 !important; 
+                margin: 0 !important;
+                width: 210mm;
+                height: 297mm;
             }
             .book-page { 
-                width: 100% !important; 
-                max-width: none !important; 
+                width: 210mm !important; 
+                max-width: 210mm !important; 
                 margin: 0 !important; 
+                padding: 0 !important;
                 gap: 0 !important;
+                display: block !important;
             }
             .page-sheet {
                 box-shadow: none !important;
                 border: none !important;
                 margin: 0 !important;
-                page-break-after: always;
-                min-height: 297mm; /* Exact A4 height */
+                padding: 20mm 25mm 45mm 25mm !important; /* Standard print margins for A4 */
+                page-break-after: always !important;
+                page-break-inside: avoid !important;
+                width: 210mm !important;
+                height: 297mm !important;
+                box-sizing: border-box !important;
+                background-color: white !important;
+                position: relative !important;
+            }
+            /* Reset positions for logo and numbers in print */
+            .page-sheet::after {
+                bottom: 10mm !important;
+                right: 15mm !important;
+            }
+            .page-sheet::before {
+                bottom: 5mm !important;
+                width: 80mm !important;
+                height: 30mm !important;
+            }
+            .page-sheet.cover-page {
+                padding: 0 !important;
+                height: 297mm !important;
+            }
+            .cover-image {
+                width: 210mm !important;
+                height: 297mm !important;
+                min-height: 297mm !important;
+            }
+            .page-sheet.back-cover {
+                background-color: #1a120f !important;
+                color: white !important;
+                height: 297mm !important;
             }
             #download-btn {
                 display: none !important;
             }
-            /* Force background colors and images for printing */
             * {
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
