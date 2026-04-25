@@ -345,69 +345,56 @@
 
         @media print {
             html, body { 
-                background: white !important; 
-                padding: 0 !important; 
+                background: radial-gradient(circle, #2c343f 0%, #0f141a 100%) !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                padding: 0 !important;
                 margin: 0 !important;
-                width: 210mm;
             }
             .book-page { 
-                display: block !important;
-                width: 210mm !important; 
-                max-width: 210mm !important; 
-                margin: 0 !important; 
-                padding: 0 !important;
-                gap: 0 !important;
+                width: 100% !important;
+                max-width: 850px !important;
+                margin: 0 auto !important;
+                padding: 60px 0 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 40px !important;
             }
             .page-sheet {
-                display: block !important;
-                position: relative !important;
-                width: 210mm !important;
-                min-height: 297mm !important; /* Allow growth if content is long */
-                height: auto !important;
-                box-sizing: border-box !important;
-                margin: 0 !important;
-                padding: 25mm 25mm 50mm 25mm !important; /* Generous margins for print */
+                display: flex !important;
+                flex-direction: column !important;
+                background-color: #fdfbf7 !important;
+                padding: 80px 100px 180px 100px !important;
+                min-height: 1000px !important;
                 page-break-after: always !important;
-                page-break-before: always !important;
-                background-color: white !important;
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
                 box-shadow: none !important;
                 border: none !important;
-                clear: both !important;
-            }
-            /* Exception: first page doesn't need break-before */
-            .page-sheet:first-child {
-                page-break-before: avoid !important;
-            }
-            
-            /* Reset positions for logo and numbers in print */
-            .page-sheet::after {
-                bottom: 10mm !important;
-                right: 15mm !important;
-                display: block !important;
-            }
-            .page-sheet::before {
-                bottom: 5mm !important;
-                width: 80mm !important;
-                height: 30mm !important;
-                display: block !important;
+                position: relative !important;
+                -webkit-print-color-adjust: exact !important;
             }
             
             .page-sheet.cover-page {
                 padding: 0 !important;
-                min-height: 297mm !important;
+                min-height: 100vh !important;
+                height: 100vh !important;
                 background-color: #000 !important;
             }
             .cover-image {
-                width: 210mm !important;
-                height: 297mm !important;
+                width: 100% !important;
+                height: 100% !important;
                 object-fit: cover !important;
             }
             
             .page-sheet.back-cover {
                 background-color: #1a120f !important;
                 color: white !important;
-                min-height: 297mm !important;
-                padding-top: 80mm !important; /* Visual vertical centering without flex */
+                min-height: 1000px !important;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                padding: 80px 100px !important;
             }
             
             #download-btn {
@@ -416,7 +403,6 @@
             * {
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
-                page-break-inside: avoid;
             }
         }
     </style>
