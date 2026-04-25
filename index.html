@@ -57,21 +57,22 @@
             bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 450px; /* Maximum size for premium impact */
+            width: 450px;
             height: 180px;
-            background-image: url('logo_v3.png');
+            background-image: url('logo_transparente.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            opacity: 0.98; /* High visibility for the subtitle */
-            mix-blend-mode: multiply; /* Perfect transparency on white pages */
+            opacity: 0.98;
         }
 
-        /* Hide footer elements on cover and back cover */
+        /* Hide footer elements on cover */
         .page-sheet.cover-page::after,
-        .page-sheet.cover-page::before,
-        .page-sheet.back-cover::after,
-        .page-sheet.back-cover::before {
+        .page-sheet.cover-page::before {
+            display: none;
+        }
+        
+        .page-sheet.back-cover::after {
             display: none;
         }
 
@@ -185,7 +186,7 @@
             justify-content: center;
             align-items: center;
             padding: 80px 100px;
-            color: #c5a059; /* A more harmonious, "antique" gold sampled from the cover title */
+            color: #ffffff; /* White text for better contrast as requested */
             text-align: center;
             min-height: 1000px;
         }
@@ -197,8 +198,9 @@
             font-size: 2.5em;
             letter-spacing: 0.3em;
             margin-bottom: 60px;
-            border-bottom: 1px solid #c5a059;
+            border-bottom: 1px solid #ffffff;
             padding-bottom: 20px;
+            color: #ffffff;
         }
         .dedication-text {
             font-family: 'Lora', serif;
