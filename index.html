@@ -367,51 +367,33 @@
                 margin: 0;
             }
             html, body { 
-                background: white !important; 
+                background: #fdfbf7 !important; /* Cor de papel sólida, gradientes falham no PDF */
                 margin: 0 !important;
                 padding: 0 !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
             }
             .book-page { 
                 width: 210mm !important;
-                max-width: none !important; 
                 margin: 0 !important; 
                 padding: 0 !important;
-                gap: 0 !important;
                 display: block !important;
             }
             .page-sheet {
                 width: 210mm !important;
-                height: 297mm !important;
+                height: 297mm !important; /* Força o tamanho exato do A4 */
                 min-height: 297mm !important;
-                padding: 80px 100px 180px 100px !important;
-                margin: 0 !important;
-                box-shadow: none !important;
-                border: none !important;
-                page-break-after: always !important;
+                padding: 80px 100px !important;
+                box-sizing: border-box !important;
+                page-break-after: always !important; /* Comando fundamental */
                 page-break-inside: avoid !important;
                 position: relative !important;
-                background-color: #fdfbf7 !important;
-                box-sizing: border-box !important;
                 overflow: hidden !important;
+                background-color: #fdfbf7 !important;
+                border: none !important;
+                box-shadow: none !important; /* Sombras causam erros de renderização no canvas */
             }
+            /* Garante que a capa ocupe a página toda */
             .page-sheet.cover-page {
-                padding: 0 !important;
-                height: 297mm !important;
                 background-color: #000 !important;
-            }
-            .cover-image {
-                width: 210mm !important;
-                height: 297mm !important;
-                object-fit: cover !important;
-            }
-            .page-sheet.back-cover {
-                background-color: #1a120f !important;
-                height: 297mm !important;
-            }
-            #download-btn {
-                display: none !important;
             }
         }
     </style>
@@ -1169,42 +1151,44 @@
             const btn = document.getElementById('download-btn');
             const originalText = btn.innerHTML;
             
-            // Show loading state
             btn.disabled = true;
-            btn.innerHTML = '<svg class="spinner" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" fill="none" stroke-width="5" stroke="#fff"></circle></svg> Gerando Ebook...';
+            btn.innerHTML = 'Gerando Ebook...';
             btn.style.opacity = '0.7';
 
-            // Ensure we are at the top
+            // 1. Garante que o usuário está no topo para a captura começar do início
             window.scrollTo(0, 0);
 
-            // Wait a bit for images
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            // 2. Aguarda o carregamento completo de todas as imagens antes de iniciar
+            const images = document.getElementsByTagName('img');
+            const imagePromises = Array.from(images).map(img => {
+                if (img.complete) return Promise.resolve();
+                return new Promise(resolve => { img.onload = resolve; img.onerror = resolve; });
+            });
+            await Promise.all(imagePromises);
 
             const element = document.querySelector('.book-page');
             
-            // Use html2pdf with specific image-mode settings
             const opt = {
                 margin: 0,
                 filename: 'A_Vantagem_Soberana_Oficial.pdf',
-                image: { type: 'jpeg', quality: 1.0 },
+                image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: { 
-                    scale: 3, // Very high quality
-                    useCORS: true,
-                    allowTaint: true,
+                    scale: 2, // Reduzido de 3 para 2 para evitar estouro de memória/páginas brancas
+                    useCORS: true, 
                     letterRendering: true,
-                    logging: false,
-                    backgroundColor: '#fdfbf7'
+                    scrollY: 0,
+                    windowWidth: document.documentElement.offsetWidth
                 },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-                pagebreak: { mode: ['css', 'legacy'] }
+                // O segredo das quebras: identifica cada .page-sheet como uma nova página
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'], before: '.page-sheet' }
             };
 
             try {
-                // Generate and download automatically
                 await html2pdf().set(opt).from(element).save();
             } catch (error) {
-                console.error('Erro:', error);
-                alert('Erro ao gerar o arquivo. Tente novamente ou use Ctrl+P.');
+                console.error('Erro ao gerar PDF:', error);
+                alert('Ocorreu um erro. Tente usar o comando Imprimir (Ctrl+P) do navegador e salvar como PDF.');
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = originalText;
