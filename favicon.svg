@@ -1,0 +1,15 @@
+<svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gold-grad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="50%" stop-color="#F2CA50"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
+    </linearGradient>
+  </defs>
+  <!-- Geometric Crown based on 'A Vantagem Soberana' logo -->
+  <path d="M50 15L68 65H32L50 15Z" fill="url(#gold-grad)"/>
+  <path d="M15 35L35 75H15L15 35Z" fill="url(#gold-grad)"/>
+  <path d="M85 35L65 75H85L85 35Z" fill="url(#gold-grad)"/>
+  <path d="M10 85H90V92H10V85Z" fill="url(#gold-grad)"/>
+  <path d="M20 78H80V82H20V78Z" fill="url(#gold-grad)" opacity="0.8"/>
+</svg>
