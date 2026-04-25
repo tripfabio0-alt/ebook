@@ -18,7 +18,7 @@
             line-height: 1.85;
             font-size: 14.5pt;
             background: radial-gradient(circle, #2c343f 0%, #0f141a 100%);
-            padding: 50px 0;
+            padding: 40px 0;
             min-height: 100vh;
             counter-reset: page-counter;
         }
@@ -28,15 +28,15 @@
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 25px; /* Reduzido para fluidez visual */
         }
 
         .page-sheet {
             background-color: #fdfbf7;
             width: 850px;
             height: 1202px;
-            padding: 100px 110px 180px 110px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            padding: 90px 105px 170px 105px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
             position: relative;
             counter-increment: page-counter;
             overflow: hidden;
@@ -44,26 +44,26 @@
             flex-direction: column;
         }
 
-        /* Page Number */
+        /* Numeração de Página */
         .page-sheet::after {
             content: counter(page-counter);
             position: absolute;
-            bottom: 45px;
-            right: 60px;
+            bottom: 40px;
+            right: 55px;
             font-family: 'Montserrat', sans-serif;
             color: #8b6e3f;
             font-weight: bold;
-            font-size: 1.1em;
+            font-size: 1em;
         }
 
-        /* Footer Logo (Crown) */
+        /* Logo de Rodapé */
         .page-footer-logo-container {
             position: absolute;
             bottom: 25px;
             left: 50%;
             transform: translateX(-50%);
-            width: 360px;
-            height: 125px;
+            width: 340px;
+            height: 115px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -78,39 +78,39 @@
 
         .page-sheet.cover-page .page-footer-logo-container { display: none; }
 
-        h1, h2, h3 { font-family: 'Montserrat', sans-serif; color: #8b6e3f; text-transform: uppercase; letter-spacing: 0.12em; }
-        h1 { text-align: center; font-size: 2.8em; margin-bottom: 30px; }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; color: #8b6e3f; text-transform: uppercase; letter-spacing: 0.1em; }
+        h1 { text-align: center; font-size: 2.7em; margin-bottom: 25px; }
         
         .chapter-title {
-            font-size: 2.1em;
+            font-size: 2em;
             text-align: center;
             border-bottom: 2px solid #8b6e3f;
-            padding-bottom: 20px;
-            margin-bottom: 45px;
+            padding-bottom: 18px;
+            margin-bottom: 35px;
         }
 
-        .chapter-number { font-size: 0.5em; display: block; color: #555; margin-bottom: 10px; font-weight: normal; }
+        .chapter-number { font-size: 0.55em; display: block; color: #555; margin-bottom: 8px; font-weight: normal; }
 
-        p { margin-bottom: 24px; text-align: justify; }
+        p { margin-bottom: 22px; text-align: justify; }
 
         .quote {
             font-style: italic;
             border-top: 1px solid #c5a059;
             border-bottom: 1px solid #c5a059;
-            padding: 25px 0;
-            margin: 40px 30px;
+            padding: 22px 0;
+            margin: 35px 35px;
             color: #3d2b1f;
             text-align: center;
-            font-size: 1.3em;
+            font-size: 1.25em;
             background: rgba(197, 160, 89, 0.05);
             line-height: 1.6;
         }
 
-        /* Cover */
+        /* Capa */
         .page-sheet.cover-page { padding: 0; background-color: #000; border: none; }
         .cover-image { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Dedication/Back Cover */
+        /* Contracapa */
         .page-sheet.back-cover {
             background-color: #1a120f;
             color: white;
@@ -118,21 +118,20 @@
             align-items: center;
             text-align: center;
         }
-        .dedication-title { font-family: 'Cinzel', serif; font-size: 2.8em; color: #c5a059; border-bottom: 1px solid #c5a059; margin-bottom: 50px; padding-bottom: 15px; }
+        .dedication-title { font-family: 'Cinzel', serif; font-size: 2.7em; color: #c5a059; border-bottom: 1px solid #c5a059; margin-bottom: 45px; padding-bottom: 15px; }
         .dedication-text { font-style: italic; font-size: 1.45em; line-height: 2; max-width: 650px; }
 
         /* Manifesto */
-        .manifesto-item { margin-bottom: 45px; }
-        .manifesto-header { display: flex; align-items: center; gap: 25px; margin-bottom: 12px; }
-        .manifesto-num { font-size: 5em; color: #8b6e3f; opacity: 0.15; font-weight: bold; line-height: 1; min-width: 100px; }
-        .manifesto-title { font-size: 1.5em; margin: 0; color: #8b6e3f; }
+        .manifesto-item { margin-bottom: 35px; }
+        .manifesto-header { display: flex; align-items: center; gap: 20px; margin-bottom: 10px; }
+        .manifesto-num { font-size: 4.5em; color: #8b6e3f; opacity: 0.15; font-weight: bold; line-height: 1; min-width: 90px; }
+        .manifesto-title { font-size: 1.4em; margin: 0; color: #8b6e3f; }
 
         #download-btn {
             position: fixed; bottom: 30px; right: 30px;
-            background: linear-gradient(135deg, #8b6e3f 0%, #5d482c 100%);
-            color: white; border: none; padding: 18px 36px; border-radius: 60px;
+            background: #8b6e3f; color: white; border: none; padding: 18px 36px; border-radius: 60px;
             font-family: 'Montserrat', sans-serif; font-weight: bold; cursor: pointer;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5); z-index: 9999;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5); z-index: 9999;
             display: flex; align-items: center; gap: 12px;
         }
     </style>
@@ -145,422 +144,249 @@
             <img src="ebook_cover_ultra_sharp.png" alt="A Vantagem Soberana" class="cover-image">
         </div>
 
-        <!-- PÁGINA 2: SUMÁRIO -->
+        <!-- PÁGINA 2: SUMÁRIO + INTRO INÍCIO -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CONTEÚDO</span> O que você encontrará nesta jornada</div>
-            <div style="font-family: 'Montserrat', sans-serif; font-size: 1.1em; line-height: 2.4; max-width: 600px; margin: 0 auto;">
-                Introdução | O Fim do "Ser Querida"<br>
-                Capítulo 1 | O Paradoxo da Respeitabilidade<br>
-                Capítulo 2 | A Ciência da Consistência<br>
-                Capítulo 3 | O Princípio da Ausência de Desculpas<br>
-                Capítulo 4 | O No-Fly Zone<br>
-                Capítulo 5 | O Custo de Manter o Peso Morto<br>
-                Capítulo 6 | O Poder da Recusa<br>
-                Capítulo 7 | O Monopólio da Competência<br>
-                Capítulo 8 | KPIs de Vida<br>
-                Capítulo 9 | O Campo de Treinamento da Vida Real<br>
-                Capítulo 10 | O Ecossistema de Elite<br>
-                Capítulo 11 | A Ação Silenciosa<br>
-                Conclusão | O Manifesto da Mulher Soberana
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 0.95em; line-height: 2.2; margin-bottom: 50px;">
+                Intro: O Fim do "Ser Querida" | Cap 1: Paradoxo da Respeitabilidade | Cap 2: Ciência da Consistência | Cap 3: Ausência de Desculpas | Cap 4: No-Fly Zone | Cap 5: Peso Morto | Cap 6: Poder da Recusa | Cap 7: Monopólio da Competência | Cap 8: KPIs de Vida | Cap 9: Campo de Treinamento | Cap 10: Ecossistema de Elite | Cap 11: Ação Silenciosa | Manifesto
             </div>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 3: INTRODUÇÃO 1 -->
-        <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">INTRODUÇÃO</span> O Fim do Ser Querida</div>
             <p>Durante muito tempo, foi-nos vendido um mito poderoso: a ideia de que o sucesso feminino é uma equação de competência somada a uma personalidade agradável. Crescemos ouvindo que precisamos ser gentis, acessíveis, colaborativas — sempre dispostas a agradar.</p>
             <p>Que uma mulher de sucesso é aquela que consegue ser competente sem intimidar, assertiva sem assustar, inteligente sem ameaçar. Este mito foi construído com cuidado e perpetuado com consistência.</p>
-            <p>Ele aparece nas avaliações de desempenho que elogiam a competência técnica, mas sugerem que a profissional poderia ser um pouco mais acessível. Aparece nas salas de reunião onde a voz feminina é interrompida, mas a mulher é orientada a comunicar melhor.</p>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- PÁGINA 4: INTRODUÇÃO 2 -->
+        <!-- PÁGINA 3: INTRO CONTINUAÇÃO -->
         <div class="page-sheet">
-            <p>Aparece nas conversas de corredor que descrevem uma líder eficaz como difícil simplesmente porque ela mantém padrões elevados. A verdade, observada nos altos escalões da liderança ao redor do mundo, é fundamentalmente diferente:</p>
+            <p>Ele aparece nas avaliações de desempenho que elogiam a competência técnica, mas sugerem que a profissional poderia ser um pouco mais acessível. Aparece nas salas de reunião onde a voz feminina é interrompida, mas a mulher é orientada a comunicar melhor. Aparece nas conversas de corredor que descrevem uma líder eficaz como difícil simplesmente porque ela mantém padrões elevados.</p>
+            <p>A verdade, observada nos altos escalões da liderança ao redor do mundo, é fundamentalmente diferente:</p>
             <div class="quote">"O desejo de ser querida é o maior dissipador de autoridade que existe."</div>
             <p>Quanto mais você busca aprovação, mais dilui o seu poder de decisão. Quanto mais você se preocupa em ser bem vista, menos você constrói resultados que importam. Quanto mais você ajusta sua voz para não desconfortar, menos sua voz é ouvida quando realmente importa.</p>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- PÁGINA 5: INTRODUÇÃO 3 -->
+        <!-- PÁGINA 4: INTRO FINAL -->
         <div class="page-sheet">
             <p>Este livro não é sobre se tornar alguém diferente. Não é sobre endurecer, sobre eliminar a empatia, ou sobre construir uma armadura emocional que te proteja do mundo. É sobre algo radicalmente diferente: ser mais intensamente quem você já é, sem as concessões desnecessárias que a cultura impôs como requisito para sua aceitação.</p>
             <h3>A Mulher Soberana</h3>
             <p>O conceito de soberania feminina não é novo, mas raramente é articulado com precisão. Uma mulher soberana não é uma mulher que nunca sente dúvida. Não é uma mulher que nunca erra. Não é uma mulher que nunca precisa de apoio ou orientação.</p>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 6: INTRODUÇÃO 4 -->
-        <div class="page-sheet">
             <p>Uma mulher soberana é a arquiteta do seu próprio ambiente e a detentora incondicional dos seus resultados. Ela entende que o poder não é algo que lhe é concedido pelos outros — é algo que ela constrói, dia após dia, através de ações consistentes com seus valores e princípios.</p>
+            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
+        </div>
+
+        <!-- PÁGINA 5: CAP 1 INÍCIO -->
+        <div class="page-sheet">
             <p>Ao longo dos próximos capítulos, vamos explorar os doze princípios que formam a base da soberania profissional: desde o paradoxo da respeitabilidade até a construção de um ecossistema de elite, passando pela arte de dizer não, o custo de manter o peso morto, e a prática silenciosa.</p>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 7: INTRODUÇÃO 5 -->
-        <div class="page-sheet">
-            <p>Prática silenciosa que separa as que apenas falam das que verdadeiramente fazem. Esta é sua jornada. Não há atalhos. Não há fórmulas mágicas. Há apenas princípios claros, aplicados com consistência, que ao longo do tempo redefinem completamente como você é percebida — e, mais importante, como você se percebe.</p>
             <div class="quote">"Soberania não é um destino. É uma prática diária de escolher quem você é, mesmo quando ninguém está olhando."</div>
+            <div class="chapter-title" style="margin-top: 30px;"><span class="chapter-number">CAPÍTULO 1</span> O Paradoxo da Respeitabilidade</div>
+            <p>Existe uma crença profundamente enraizada no imaginário coletivo sobre liderança feminina: a ideia de que respeito é uma recompensa pela diplomacia. Que se você for suficientemente gentil, as pessoas naturalmente passarão a te respeitar.</p>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- PÁGINA 8: CAPÍTULO 1 START -->
+        <!-- PÁGINA 6: CAP 1 DINÂMICA -->
         <div class="page-sheet">
-            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 1</span> O Paradoxo da Respeitabilidade</div>
-            <p>Existe uma crença profundamente enraizada no imaginário coletivo sobre liderança feminina: a ideia de que respeito é uma recompensa pela diplomacia. Que se você for suficientemente gentil, suficientemente cuidadosa com as palavras, suficientemente atenta às necessidades dos outros, as pessoas naturalmente passarão a te respeitar.</p>
             <p>Esta crença não é apenas falsa — ela é ativamente prejudicial. Quando você busca aprovação, você posiciona-se inconscientemente como alguém que precisa de validação externa para confirmar seu valor.</p>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 9: CAPÍTULO 1 DYNAMICS -->
-        <div class="page-sheet">
             <h3>A Dinâmica de Poder</h3>
             <p>Esse posicionamento cria uma dinâmica de poder clara: você em posição de peticionante, os outros em posição de julgadores. Observe como isso se manifesta no dia a dia corporativo:</p>
             <ul>
-                <li style="margin-left: 30px; margin-bottom: 15px;">Você termina uma apresentação e fica observando as expressões dos presentes para avaliar se foi bem.</li>
+                <li style="margin-left: 30px; margin-bottom: 15px;">Você termina uma apresentação e observa as expressões dos presentes para avaliar se foi bem.</li>
                 <li style="margin-left: 30px; margin-bottom: 15px;">Você envia um e-mail com uma posição firme e depois começa a se perguntar se foi direta demais.</li>
+                <li style="margin-left: 30px; margin-bottom: 15px;">Você toma uma decisão impopular e depois passa horas tentando suavizar as arestas.</li>
             </ul>
+            <p>Em cada um desses momentos, você está transferindo poder. Você está dizendo: Meu valor depende da sua aprovação.</p>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- PÁGINA 10: CAPÍTULO 1 DYNAMICS 2 -->
-        <div class="page-sheet">
-            <ul>
-                <li style="margin-left: 30px; margin-bottom: 15px;">Você toma uma decisão impopular, mas necessária, e depois passa horas tentando suavizar as arestas.</li>
-            </ul>
-            <p>Em cada um desses momentos, você está transferindo poder. Você está dizendo, com suas ações: Meu valor depende da sua aprovação. O paradoxo central é este: a busca por aprovação produz o oposto do que se busca. Quando você persegue aprovação, você demonstra que precisa dela.</p>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 11: CAPÍTULO 1 APPROVAL VS AUTHORITY -->
+        <!-- PÁGINA 7: CAP 1 APROVAÇÃO -->
         <div class="page-sheet">
             <h3>Aprovação vs. Autoridade</h3>
-            <p>E pessoas que precisam de aprovação raramente inspiram respeito genuíno — inspiram, no máximo, afeto condescendente. Autoridade, por outro lado, é construída sobre uma base completamente diferente: a demonstração consistente de valor real. Não a performance de valor. Não a comunicação de valor. A entrega tangível e repetida de valor que ninguém pode ignorar ou questionar.</p>
+            <p>O paradoxo central é este: a busca por aprovação produz o oposto do que se busca. Quando você persegue aprovação, você demonstra que precisa dela. E pessoas que precisam de aprovação raramente inspiram respeito genuíno — inspiram, no máximo, afeto condescendente.</p>
+            <p>Autoridade, por outro lado, é construída sobre uma base completamente diferente: a demonstração consistente de valor real. Não a performance de valor. Não a comunicação de valor. A entrega tangível e repetida de valor que ninguém pode ignorar ou questionar.</p>
             <div class="quote">"Se você busca aprovação, você pede validação. Se você estabelece padrões, você comanda respeito."</div>
+            <p>A transição de buscar aprovação para estabelecer padrões começa com uma mudança fundamental na sua relação com a opinião alheia. Não se trata de indiferença — trata-se de hierarquização.</p>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- PÁGINA 12: CAPÍTULO 1 MINDSET -->
+        <!-- PÁGINA 8: CAP 1 AUTORIDADE -->
         <div class="page-sheet">
-            <h3>A Mudança de Mentalidade</h3>
-            <p>A transição de buscar aprovação para estabelecer padrões começa com uma mudança fundamental na sua relação com a opinião alheia. Não se trata de indiferença — trata-se de hierarquização. Você passa a distinguir entre feedback valioso, que melhora sua performance e seus resultados, e ruído de aprovação, que diz mais sobre quem as tem do que sobre você.</p>
-            <p>A mulher soberana escuta o primeiro com atenção genuína. O segundo ela observa com curiosidade, mas não permite que dite suas ações.</p>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 13: CAPÍTULO 1 AUTHORITY REAL -->
-        <div class="page-sheet">
-            <p>Esta distinção exige um trabalho interno significativo, especialmente para mulheres que foram condicionadas desde a infância a monitorar as reações dos outros como sinal de segurança social.</p>
+            <p>Você passa a distinguir entre feedback valioso, que melhora sua performance e seus resultados, e ruído de aprovação, que diz mais sobre quem as tem do que sobre você. A mulher soberana escuta o primeiro com atenção genuína. O segundo ela observa com curiosidade, mas não permite que dite suas ações.</p>
             <h3>Construindo Autoridade Real</h3>
-            <p>A autoridade genuína não é construída em um único momento decisivo. Ela é acumulada através de centenas de pequenas escolhas: falar com clareza quando seria mais fácil ser vaga; manter uma posição quando seria mais confortável ceder.</p>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 14: CAPÍTULO 1 FINAL -->
-        <div class="page-sheet">
-            <p>Assumir responsabilidade quando seria mais conveniente distribuir culpa; entregar resultados quando seria mais seguro apenas gerenciar expectativas. Cada uma dessas escolhas é um depósito na sua conta de autoridade. Cada vez que você busca aprovação em vez de entregar valor, você faz uma retirada.</p>
+            <p>A autoridade genuína não é construída em um único momento decisivo. Ela é acumulada através de centenas de pequenas escolhas: falar com clareza quando seria mais fácil ser vaga; manter uma posição quando seria mais confortável ceder; assumir responsabilidade quando seria conveniente distribuir culpa.</p>
             <div class="quote">"Respeito não é uma recompensa pela diplomacia. É o reconhecimento de valor demonstrado consistentemente."</div>
-            <p>O paradoxo da respeitabilidade se resolve quando você para de perseguir o respeito e começa a construí-lo — um resultado, uma decisão, um padrão de cada vez.</p>
+            <p>Cada uma dessas escolhas é um depósito na sua conta de autoridade. Cada vez que você busca aprovação em vez de entregar valor, você faz uma retirada.</p>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- PÁGINA 15: CAPÍTULO 2 -->
+        <!-- PÁGINA 9: CAP 2 INÍCIO -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 2</span> A Ciência da Consistência</div>
             <p>Se há um único princípio que unifica todos os outros neste livro, é este: consistência é mais poderosa do que qualquer talento, carisma, ou conexão que você possa ter. A consistência é o multiplicador silencioso que transforma competência em autoridade, intenção em resultado, e promessa em reputação.</p>
             <h3>A Conta de Autoridade</h3>
-            <p>Pense na sua autoridade profissional como uma conta bancária. Cada entrega consistente é um depósito. Cada falha ou desleixo - cada reunião despreparada, cada prazo ignorado - é uma retirada.</p>
+            <p>Pense na sua autoridade profissional como uma conta bancária. Cada entrega consistente é um depósito. Cada falha ou desleixo - cada reunião despreparada, cada prazo ignorado - é uma retirada. O saldo desta conta não é visível a olho nu. Mas ele é sentido por todos ao seu redor.</p>
+            <p>A matemática desta conta é assimétrica e implacável: uma única entrega consistente constrói um pouco de confiança. Uma única falha destrói múltiplos depósitos.</p>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- PÁGINA 16: CAPÍTULO 2 ACCOUNT -->
+        <!-- PÁGINA 10: CAP 2 DIMENSÕES -->
         <div class="page-sheet">
-            <p>O saldo desta conta não é visível a olho nu. Mas ele é sentido por todos ao seu redor. Pessoas com saldo alto são consultadas antes das decisões importantes. Pessoas com saldo negativo são contornadas nas situações críticas, mesmo que ninguém explique explicitamente por que.</p>
-            <p>A matemática desta conta é assimétrica e implacável: uma única entrega consistente constrói um pouco de confiança. Uma única falha ou desleixo destrói múltiplos depósitos de confiança. Recuperar o saldo após uma falha exige um número desproporcional de entregas consistentes.</p>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 17: CAPÍTULO 2 PREVISIBILIDADE -->
-        <div class="page-sheet">
-            <p>Isso não significa que você precisa ser perfeita. Significa que você precisa ser previsivelmente confiável - as pessoas ao seu redor devem saber que quando você diz que vai fazer algo, você vai fazer.</p>
-            <h3>O Poder da Previsibilidade Positiva</h3>
-            <p>O cérebro humano é uma máquina de reconhecimento de padrões. Quando você demonstra consistência, você ativa o circuito de confiança no cérebro das pessoas ao seu redor. Líderes e colegas não conscientizam este processo. Eles apenas sentem que podem contar com você.</p>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 18: CAPÍTULO 2 DIMENSIONS -->
-        <div class="page-sheet">
+            <p>Isso não significa que você precisa ser perfeita. Significa que você precisa ser previsivelmente confiável - as pessoas ao seu redor devem saber que quando você diz que vai fazer algo, você vai fazer. O cérebro humano é uma máquina de reconhecimento de padrões.</p>
             <h3>Consistência em Três Dimensões</h3>
-            <p><strong>Consistência de Entrega:</strong> O plano mais visível: você entrega o que prometeu, no prazo que prometeu, com a qualidade que estabeleceu como padrão. Esta é a forma mais básica de consistência.</p>
-            <p><strong>Consistência de Padrão:</strong> Seu padrão de excelência é o mesmo independentemente de quem está observando. Você não tem um modo quando o chefe está presente e um modo quando ninguém está olhando. Seu padrão é seu padrão, ponto.</p>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 19: CAPÍTULO 2 CHARACTER -->
-        <div class="page-sheet">
-            <p><strong>Consistência de Caráter:</strong> O plano mais profundo: seus valores e princípios são consistentes mesmo quando é inconveniente ser assim. Quando a pressão aumenta, você não abandona o que acredita.</p>
+            <p><strong>Entrega:</strong> Você entrega o que prometeu, no prazo que prometeu. <strong>Padrão:</strong> Seu padrão de excelência é o mesmo independentemente de quem observa. <strong>Caráter:</strong> Seus valores são consistentes mesmo quando é inconveniente ser assim.</p>
             <div class="quote">"A autoridade não é construída em momentos grandiosos. É construída na consistência silenciosa de cada dia."</div>
             <h3>Construindo Seu Histórico de Evidências</h3>
-            <p>Um histórico de evidências é o registro acumulado da sua consistência ao longo do tempo. Não são os grandes projetos que aparecem no currículo - são os pequenos atos de confiabilidade repetidos dia após dia.</p>
+            <p>Documente suas entregas; comunique proativamente; defina padrões claros; solicite feedback específico. Este processo constrói uma reputação que nenhum discurso de autopromoção pode criar.</p>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- PÁGINA 20: CAPÍTULO 2 FINAL -->
-        <div class="page-sheet">
-            <ul>
-                <li style="margin-left: 30px; margin-bottom: 15px;">Documente suas entregas. Mantenha um registro pessoal do que você comprometeu e entregou.</li>
-                <li style="margin-left: 30px; margin-bottom: 15px;">Comunique proativamente. Atualize os stakeholders antes que precisem perguntar.</li>
-                <li style="margin-left: 30px; margin-bottom: 15px;">Defina padrões claros. Estabeleça expectativas explícitas sobre qualidade e prazo.</li>
-                <li style="margin-left: 30px; margin-bottom: 15px;">Solicite feedback específico. Pergunte sobre áreas concretas de melhoria.</li>
-            </ul>
-            <p>Este processo, repetido consistentemente, constrói uma reputação que nenhum discurso de autopromoção pode criar.</p>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 21: CAPÍTULO 3 START -->
+        <!-- PÁGINA 11: CAP 3 INÍCIO -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 3</span> O Princípio da Ausência de Desculpas</div>
-            <p>Existe uma diferença fundamental entre explicar e justificar. Explicar é fornecer contexto relevante para que decisões futuras sejam tomadas com mais informação. Justificar é construir um caso de defesa para proteger sua identidade de uma percepção de fracasso.</p>
-            <p>A anatomia da justificativa é a antítese da liderança. E ela é insidiosamente sedutora, porque parece razoável examine em detalhe por que algo não funcionou. Toda justificativa segue uma estrutura reconhecível.</p>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 22: CAPÍTULO 3 ESTRUTURA -->
-        <div class="page-sheet">
-            <h3>A Estrutura da Justificativa</h3>
-            <p>Toda justificativa começa com o fato inicial - o resultado que ficou abaixo do esperado. Em seguida, vem a sequência de eventos que conspiraram contra o sucesso: o cliente que mudou os requisitos no último momento, o colega que não entregou sua parte, o budget que foi cortado.</p>
-            <p>Depois vem a conclusão inevitável: dadas todas essas circunstâncias, você não poderia ter feito diferente. Esta estrutura é convincente. Ela até parece lógica. Mas ela coloca você em uma posição fundamentalmente passiva.</p>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 23: CAPÍTULO 3 QUOTE -->
-        <div class="page-sheet">
+            <p>Existe uma diferença fundamental entre explicar e justificar. Explicar é fornecer contexto relevante para decisões futuras. Justificar é construir um caso de defesa para proteger sua identidade de uma percepção de fracasso. Toda justificativa segue uma estrutura reconhecível.</p>
+            <p>Começa com o fato inicial - o resultado abaixo do esperado. Em seguida, os eventos que conspiraram: o cliente, o colega, o budget. Depois vem a conclusão inevitável: você não poderia ter feito diferente. Esta estrutura coloca você em uma posição fundamentalmente passiva.</p>
             <div class="quote">"Justificativas são traições disfarçadas. Elas traem sua autoridade, a confiança da sua equipe, e o mandato que você recebeu como líder."</div>
-            <h3>O Comportamento da Mulher que é Dona de Suas Ações</h3>
-            <p>A alternativa à justificativa não é a autocrítica excessiva ou a autopunição. É algo muito mais simples e muito mais poderoso: a responsabilidade radical. Admite fatos sem filtros: Sim, o resultado não foi o que deveria ser. Houve um erro. Eu poderia ter agido diferente. Sem drama, sem culpa.</p>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- PÁGINA 24: CAPÍTULO 3 RESPONSABILIDADE -->
+        <!-- PÁGINA 12: CAP 3 RESPONSABILIDADE -->
         <div class="page-sheet">
-            <p>Apresenta correções imediatas. Não espera permissão, não busca consenso - propõe soluções e começa a executá-las. A velocidade da correção é um indicador de autoridade. Segue em frente sem olhar para trás. Mantém o momentum, não cria ciclos infinitos de remorso.</p>
-            <p>Esta sequência parece simples. Na prática, ela exige uma capacidade significativa de regular o ego - de separar a avaliação de um resultado da avaliação de você mesma como pessoa. Você pode ter falhado sem ser um fracasso.</p>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 25: CAPÍTULO 3 FINAL -->
-        <div class="page-sheet">
+            <h3>Responsabilidade Radical</h3>
+            <p>A alternativa à justificativa não é a autopunição, mas a responsabilidade radical. Admite fatos sem filtros: Sim, houve um erro. Eu poderia ter agido diferente. Sem drama, apenas clareza. Apresenta correções imediatas e segue em frente sem olhar para trás.</p>
+            <p>A velocidade da correção é um indicador de autoridade. Esta sequência exige regular o ego - separar a avaliação do resultado da sua avaliação como pessoa. Você pode ter falhado sem ser um fracasso.</p>
             <h3>Construindo a Cultura da Responsabilidade</h3>
-            <p>Quando você adota este princípio pessoalmente, você começa a criar um ambiente onde responsabilidade é a norma. Sua equipe observa que você não distribui culpa. Que você mantém o mesmo padrão para si que mantém para os outros. Este modelo de comportamento é contagioso.</p>
-            <div class="quote">"Seu time não precisa de uma líder perfeita. Precisa de uma líder presente, disposta a olhar nos olhos da verdade, e pronta para construir o próximo passo."</div>
+            <p>Quando você adota este princípio, cria um ambiente onde responsabilidade é a norma. Sua equipe observa que você não distribui culpa e mantém o mesmo padrão para si e para os outros.</p>
+            <div class="quote">"Seu time não precisa de uma líder perfeita. Precisa de uma líder presente, disposta a olhar nos olhos da verdade."</div>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- PÁGINA 26: CAPÍTULO 4 START -->
+        <!-- PÁGINA 13: CAP 4 INÍCIO -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 4</span> O No-Fly Zone</div>
-            <p>O que você não tolera define quem você é com mais precisão do que aquilo que você valoriza. O conceito do No-Fly Zone é simples: há comportamentos absolutamente incompatíveis com o ambiente que você está construindo. Não são preferências. Não são sugestões. São limites inegociáveis.</p>
-            <h3>Por Que Limites Claros Atraem Respeito</h3>
-            <p>Existe uma crença popular de que pessoas com limites firmes são difíceis ou inflexíveis. Na prática, o oposto é verdadeiro. Pessoas com limites claros são as mais fáceis de trabalhar - porque você sabe exatamente o que esperar delas.</p>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 27: CAPÍTULO 4 BEHAVIORS -->
-        <div class="page-sheet">
-            <p>A ambiguidade é o verdadeiro gerador de conflito. Quando os limites estão claros, a energia pode ser direcionada para o trabalho. Os Quatro Comportamentos do No-Fly Zone:</p>
-            <p><strong>Manipulação de Informação:</strong> Ocultar ou distorcer informações para moldar narrativas. Isso normaliza a desonestidade e impede a colaboração real.</p>
-            <p><strong>Quebra de Confiança:</strong> Faltar com a verdade ou trair confidências. A confiança é o ativo mais frágil e difícil de reconstruir.</p>
-            <p><strong>Resistência Passiva:</strong> Acordos verbais seguidos de sabotagem sutil ou falta de follow-through.</p>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 28: CAPÍTULO 4 TOXIC -->
-        <div class="page-sheet">
-            <p><strong>Comportamento Tóxico:</strong> Intimidação, desrespeito ou linguagem depreciativa. Inclui o comentário que diminui, o tom que invalida, o silêncio que exclui.</p>
-            <h3>Construindo Seu No-Fly Zone em 3 Passos</h3>
-            <p>Identifique os comportamentos que geram uma reação visceral; articule-os com palavras claras e específicas; execute sem hesitação quando eles aparecem. Consequências sem execução são apenas ameaças vazias que diluem sua autoridade.</p>
+            <p>O que você não tolera define quem você é com mais precisão do que aquilo que você valoriza. O conceito do No-Fly Zone são comportamentos inegociáveis. Pessoas com limites claros são as mais fáceis de trabalhar, porque as regras do jogo são conhecidas.</p>
+            <p>A ambiguidade é o verdadeiro gerador de conflito. Os Quatro Comportamentos Críticos: <strong>Manipulação de Informação:</strong> Ocultar ou distorcer informações. <strong>Quebra de Confiança:</strong> Faltar com a verdade ou trair confidências. <strong>Resistência Passiva:</strong> Sabotagem sutil. <strong>Comportamento Tóxico:</strong> Intimidação ou desrespeito.</p>
             <div class="quote">"A tolerância de comportamentos que violam seus padrões é o que perpetua ambientes tóxicos. Quando você tolera o intolerável, você se torna cúmplice dele."</div>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- PÁGINA 29: CAPÍTULO 5 START -->
+        <!-- PÁGINA 14: CAP 5 INÍCIO -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 5</span> O Custo de Manter o Peso Morto</div>
-            <p>Toda decisão de manter tem um custo de oportunidade. Quando você mantém pessoas ou situações que drenam sua energia sem retornar valor, você está fazendo uma escolha estratégica. O peso morto se camufla de lealdade ou esperança. A mulher soberana vê através dessas camuflagens.</p>
-            <h3>O Custo de Oportunidade Oculto</h3>
-            <p>Cada "sim" dado sem reflexão é um "não" implícito para algo mais importante. Cada hora investida em uma relação que não cresce é uma hora não investida em sua trajetória.</p>
+            <p>Toda decisão de manter tem um custo de oportunidade. O peso morto se camufla de lealdade ou esperança. A mulher soberana vê através dessas camuflagens e identifica o que verdadeiramente merece sua energia. Cada "sim" dado sem reflexão é um "não" implícito para algo mais importante.</p>
+            <p>O verdadeiro custo não é apenas o tempo desperdiçado, mas a oportunidade perdida de construir e crescer. Como Identificar: drenagem consistente de energia; ausência de reciprocidade; alinhamento forçado; opção de saída ignorada.</p>
+            <div class="quote">"A coragem de eliminar o supérfluo é a primeira marca da soberania. Não é o que você acumula que define sua grandeza."</div>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- PÁGINA 30: CAPÍTULO 5 IDENTIFY -->
-        <div class="page-sheet">
-            <p>O verdadeiro custo do peso morto não é apenas o tempo desperdiçado, mas a oportunidade perdida de construir, crescer e se posicionar. Como Identificar o Peso Morto:</p>
-            <p><strong>Drenagem consistente de energia:</strong> Você sai de toda interação sentindo-se menor ou mais esgotada. <strong>Ausência de reciprocidade:</strong> Relações unilaterais onde você investe e eles consomem. <strong>Alinhamento forçado:</strong> Você precisa ajustar seus valores para acomodar o outro. <strong>Opção de saída ignorada:</strong> Você permanece por inércia ou medo.</p>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 31: CAPÍTULO 5 CUT -->
-        <div class="page-sheet">
-            <h3>O Poder de Cortar</h3>
-            <p>Cortar o peso morto é higiene estratégica. Assim como um jardim precisa de poda regular para que as plantas saudáveis possam crescer, sua vida profissional precisa de eliminação regular do que não serve mais. Isso pode significar encerrar projetos ou reconfigurar relações de desgaste unilateral.</p>
-            <div class="quote">"A coragem de eliminar o supérfluo é a primeira marca da soberania. Não é o que você acumula que define sua grandeza - é o que você tem a sabedoria de deixar para trás."</div>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 32: CAPÍTULO 6 START -->
+        <!-- PÁGINA 15: CAP 6 INÍCIO -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 6</span> O Poder da Recusa</div>
-            <p>Essa habilidade é dizer não. Não o não tímido, repleto de desculpas, mas o não claro, firme e sereno de alguém que sabe exatamente o que sua energia vale. Seu tempo é seu ativo mais escasso e irrecuperável. Uma vez que passou, passou. Cada hora é uma oportunidade que existe uma única vez.</p>
-            <p>A maioria das pessoas age como se o tempo fosse infinito, preenchendo agendas até o colapso. A mulher soberana faz diferente: trata cada bloco de tempo como uma decisão estratégica de investimento.</p>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 33: CAPÍTULO 6 STRATEGIC NO -->
-        <div class="page-sheet">
+            <p>Dizer não é uma habilidade que transforma trajetórias. É o não claro e firme de quem sabe o valor da sua energia. Seu tempo é seu ativo mais escasso e irrecuperável. Uma vez que passou, passou. A maioria das pessoas age como se o tempo fosse infinito, mas a mulher soberana trata cada bloco como decisão estratégica.</p>
             <h3>A Arte do Não Estratégico</h3>
-            <p>Dizer não estrategicamente é ser honesta sobre o que você pode fazer com excelência e o que não está alinhado com seus objetivos. Estabeleça seus limites com antecedência; pratique começando com situações de baixo risco; ofereça alternativas quando genuíno; mantenha sua posição sem justificativas excessivas.</p>
+            <p>Dizer não estrategicamente é ser honesta sobre excelência e alinhamento. Estabeleça limites com antecedência; pratique com situações de baixo risco; mantenha sua posição sem justificativas excessivas.</p>
             <div class="quote">"A mulher que domina o não não perde oportunidades - ela as cria. Cada recusa estratégica libera espaço para o que verdadeiramente importa."</div>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- PÁGINA 34: CAPÍTULO 6 PARADOX -->
+        <!-- PÁGINA 16: CAP 7 INÍCIO -->
         <div class="page-sheet">
-            <p>Existe um paradoxo contraintuitivo: quanto mais você usa o não com clareza, mais oportunidades relevantes começam a aparecer. Isso acontece porque você começa a ser percebida como alguém que respeita seu próprio tempo. Este é o poder transformador da recusa estratégica: ela redefine como seu tempo é percebido pelos outros e protege sua missão.</p>
-            <div class="chapter-title" style="margin-top: 40px;"><span class="chapter-number">CAPÍTULO 7</span> O Monopólio da Competência</div>
-            <p>O que diferencia profissionais não é o quanto sabem, mas o quanto conseguem fazer. A execução impecável é o diferencial mais valioso e raro.</p>
+            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 7</span> O Monopólio da Competência</div>
+            <p>O que diferencia profissionais não é o quanto sabem, mas o quanto conseguem fazer. A execução impecável é o diferencial mais valioso. A mulher soberana constrói um monopólio de competência irreplicável através de prática deliberada. O mercado paga prêmio por especialistas.</p>
+            <h3>As Três Posições de Competência</h3>
+            <p><strong>Generalista:</strong> Amplo repertório, mas substituível. <strong>Especialista:</strong> Profundidade em um domínio; procurada para problemas complexos. <strong>Mestra:</strong> Perspectiva única e histórico de resultados. É a primeira ligação na crise.</p>
+            <div class="quote">"Você não precisa ser a melhor do mundo em algo. Precisa ser a melhor disponível para os problemas reais."</div>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- PÁGINA 35: CAPÍTULO 7 POSITIONS -->
-        <div class="page-sheet">
-            <p>A mulher soberana se torna indispensável em algo específico. Ela constrói um monopólio de competência irreplicável através de prática deliberada. As Três Posições de Competência:</p>
-            <p><strong>Generalista:</strong> Amplo repertório, mas substituível. <strong>Especialista:</strong> Profundidade em um domínio específico; procurada para problemas complexos. <strong>Mestra:</strong> Perspectiva única, metodologia própria e histórico de resultados. A primeira ligação quando o problema é crítico.</p>
-            <div class="quote">"Você não precisa ser a melhor do mundo em algo. Precisa ser a melhor disponível para os problemas que as pessoas ao seu redor precisam resolver."</div>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 36: CAPÍTULO 7 MASTERY -->
+        <!-- PÁGINA 17: CAP 7 JORNADA -->
         <div class="page-sheet">
             <h3>A Jornada da Maestria</h3>
-            <p>Maestria não é alcançada por acidente. Começa com uma escolha: escolha um domínio com aptidão ou interesse genuíno; estude deliberadamente com mentores; pratique com foco intencional; aplique consistentemente para resolver problemas reais no mundo.</p>
-            <p>Este processo não é rápido, mas é linear. Cada hora de prática te move um passo adiante. A mestra que você se torna é insubstituível de uma forma que nenhum generalista jamais será na jornada profissional.</p>
+            <p>Maestria não é alcançada por acidente. Escolha um domínio; estude deliberadamente com mentores; pratique com foco intencional; aplique consistentemente para resolver problemas reais no mundo. Este processo constrói uma reputação sólida.</p>
+            <p>Cada hora de prática deliberada te move um passo adiante na jornada. A mestra que você se torna é insubstituível de uma forma que nenhum generalista jamais será na jornada profissional de elite.</p>
+            <div class="chapter-title" style="margin-top: 40px;"><span class="chapter-number">CAPÍTULO 8</span> KPIs de Vida</div>
+            <p>Se você não consegue medir o progresso, você não tem uma estratégia. A mulher soberana aplica rigor analítico ao seu próprio desenvolvimento. Dados não têm ego; eles dizem o que é, sem filtros.</p>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- PÁGINA 37: CAPÍTULO 8 START -->
-        <div class="page-sheet">
-            <div class="chapter-title"><span class="chapter-number">CAPÍTULO 8</span> KPIs de Vida</div>
-            <p>Se você não consegue medir o seu progresso, você não tem uma estratégia - você tem um desejo. A mulher soberana aplica o mesmo rigor analítico que usa nos negócios à avaliação do seu próprio desenvolvimento. Ela define métricas claras e revisa com honestidade brutal.</p>
-            <div class="quote">"Dados não têm ego. Eles dizem o que é, sem filtros ou narrativas convenientes."</div>
-            <p>O ego quer acreditar no progresso. Os dados dizem se ele é real. Confie sempre nos dados para guiar suas decisões e ajustes.</p>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 38: CAPÍTULO 8 KPIS -->
+        <!-- PÁGINA 18: CAP 8 KPIS -->
         <div class="page-sheet">
             <h3>Construindo Seus KPIs de Vida</h3>
-            <p>Os indicadores profissionais e de desenvolvimento devem ser mensuráveis: número de projetos entregues; volume de negócios gerado; qualidade das decisões; horas de prática deliberada; qualidade das relações do ecossistema; nível de alinhamento entre valores e ações reais.</p>
-            <p>O Sistema de Revisão: Metas Anuais (visão de 12 meses); Indicadores Mensais (progresso); Revisão Semanal (check-in honesto); Ajustes Diários (correções de curso).</p>
+            <p>Indicadores Profissionais: projetos entregues, negócios gerados, qualidade das decisões. Indicadores Pessoais: horas de prática deliberada, qualidade das relações, clareza mental sob pressão. O Sistema de Revisão inclui metas anuais, indicadores mensais e check-ins semanais.</p>
             <div class="quote">"Se você não consegue medir, você não consegue melhorar. E se você não consegue melhorar, você apenas está ocupada - não está crescendo."</div>
+            <p>A soberania exige que você seja a juíza imparcial da sua própria trajetória, usando métricas que não mentem. O ego quer acreditar no progresso, mas os dados confirmam a realidade dos fatos.</p>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- PÁGINA 39: CAPÍTULO 9 START -->
+        <!-- PÁGINA 19: CAP 9 INÍCIO -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 9</span> O Campo de Treinamento da Vida Real</div>
             <p>Conhecer um princípio é diferente de vivê-lo. A única arena onde a maestria acontece é a vida real. Conhecimento teórico sem aplicação não é competência; é conforto intelectual. E conforto intelectual não resolve problemas reais nem mantém limites quando testados sob pressão.</p>
             <div class="quote">"A maestria não vem antes da ação - ela vem da ação. Cada execução imperfeita ensina mais que horas de teoria perfeita."</div>
-            <p>Reuniões difíceis, decisões sob pressão e conversas postergadas são seus momentos de prática e construção de autoridade real.</p>
+            <p>Reuniões difíceis, decisões sob pressão e conversas postergadas são seus momentos de prática e construção de autoridade real. A mulher soberana não espera estar pronta; ela age enquanto aprende.</p>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- PÁGINA 40: CAPÍTULO 9 PHILOSOPHY -->
-        <div class="page-sheet">
-            <h3>A Filosofia do Inacabado</h3>
-            <p>A mulher soberana não espera estar pronta. Ela age enquanto aprende. Toma reuniões difíceis mesmo com medo e inicia projetos sem todas as respostas. Comece imperfeita e corrija no movimento. Aprenda com cada iteração na arena real.</p>
-            <p>Não há substituto para o campo de treinamento da vida real. Cada limite mantido quando você sente impulso de ceder é um exercício do músculo de julgamento e soberania que define quem você é como líder em cada interação cotidiana.</p>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 41: CAPÍTULO 10 START -->
+        <!-- PÁGINA 20: CAP 10 INÍCIO -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 10</span> O Ecossistema de Elite</div>
-            <p>Você é o resultado médio das pessoas com quem passa mais tempo. Suas referências e padrões são moldados pelo ecossistema humano em que está inserida. Compreender isso é pragmatismo fundamental para a construção da sua trajetória profissional.</p>
-            <h3>A Curadoria do Círculo</h3>
-            <p>A mulher soberana constrói deliberadamente um ecossistema de relações que a eleva e desafia. Seus relacionamentos são uma das suas decisões de gestão mais importantes. Curadoria não é exclusão, mas reconhecimento de valor estratégico.</p>
+            <p>Você é o resultado médio das pessoas com quem passa mais tempo. Suas referências e padrões são moldados pelo ecossistema humano em que está inserida. A curadoria do seu círculo é uma decisão de gestão vital. Construa um ecossistema que eleve seu teto de exigência.</p>
+            <p>As Cinco Posições: <strong>Mentores</strong> (experiência); <strong>Pares</strong> (desafio mútuo); <strong>Mentorados</strong> (transmissão); <strong>Colaboradores</strong> (complementaridade); <strong>Desafiadores</strong> (questionamento e clareza).</p>
+            <div class="quote">"Você não pode crescer além do teto imposto pelo seu ecossistema. Se quer crescer, construa um ecossistema cujo teto seja mais alto."</div>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- PÁGINA 42: CAPÍTULO 10 POSITIONS -->
-        <div class="page-sheet">
-            <p>As Cinco Posições do Ecossistema: <strong>Mentores</strong> (experiência real); <strong>Pares</strong> (desafio intelectual mútuo); <strong>Mentorados</strong> (transmissão que aprofunda compreensão); <strong>Colaboradores</strong> (complementaridade de competências); <strong>Desafiadores</strong> (questionamento e clareza).</p>
-            <div class="quote">"Você não pode crescer além do teto imposto pelo seu ecossistema. Se quer crescer, construa um ecossistema cujo teto seja mais alto que o seu atual."</div>
-            <p>Invista em relações antes de precisar delas; dê antes de pedir; seja seletiva e revise seu ecossistema regularmente para que ele evolua junto com você.</p>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 43: CAPÍTULO 11 START -->
+        <!-- PÁGINA 21: CAP 11 INÍCIO -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 11</span> A Ação Silenciosa</div>
-            <p>O amador anuncia. O mestre entrega. Existe uma correlação negativa: quanto mais alguém fala sobre o que vai fazer, menos energia resta para a execução real. O ato de anunciar gera satisfação prematura que reduz a motivação para agir.</p>
-            <p>Anunciar antes de entregar expõe você ao risco de falha pública. A ação silenciosa elimina esse risco. Você entrega, e só então comunica. Resultados concretos são evidências irrefutáveis que nenhum discurso consegue replicar na prática.</p>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 44: CAPÍTULO 11 COMMUNICATION -->
-        <div class="page-sheet">
+            <p>O amador anuncia. O mestre entrega. Existe uma correlação negativa: quanto mais alguém fala sobre o que vai fazer, menos energia resta para a execução real. O ato de anunciar gera satisfação prematura que reduz a motivação para agir. Resultados concretos são evidências irrefutáveis.</p>
             <div class="quote">"O ruído da autopromoção vazia é um sinal de fraqueza. A execução impecável é a prova de força que nenhum discurso pode substituir."</div>
-            <p>Ação silenciosa não é invisibilidade. Visibilidade é construída sobre entregas reais. A comunicação estratégica acontece depois da entrega: documente o resultado, comunique o impacto e forneça evidência em vez de pedir crédito.</p>
-            <p>Cultive a disciplina do silêncio produtivo: defina métricas internas; pratique o foco profundo; celebre entregas, não anúncios. O silêncio produtivo é concentração que gera resultados extraordinários.</p>
+            <p>Visibilidade é construída sobre entregas reais. A comunicação estratégica acontece depois da entrega: documente o resultado e forneça evidência. Cultive a disciplina do silêncio produtivo.</p>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- PÁGINA 45: CONCLUSÃO START -->
+        <!-- PÁGINA 22: CONCLUSÃO MANIFESTO -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CONCLUSÃO</span> O Manifesto da Mulher Soberana</div>
-            <p>Soberania não é um estado, é uma prática diária. Este é o manifesto do seu comprometimento:</p>
+            <p>Soberania é uma prática diária. Este é o manifesto do seu comprometimento:</p>
             <div class="manifesto-item">
                 <div class="manifesto-header"><div class="manifesto-num">01</div><h3 class="manifesto-title">A Arquitetura do Ambiente</h3></div>
-                <p>Eu sou a arquiteta do meu ambiente. Reconfiguro meu ambiente e rituais para que sirvam aos meus objetivos.</p>
+                <p>Eu sou a arquiteta do meu ambiente. Reconfiguro meu ambiente e rituais para que sirvam aos meus objetivos estratégicos.</p>
             </div>
             <div class="manifesto-item">
                 <div class="manifesto-header"><div class="manifesto-num">02</div><h3 class="manifesto-title">A Detentora dos Resultados</h3></div>
-                <p>Eu sou a detentora dos meus resultados. Não transfiro responsabilidade. Assumo a autoria completa da minha trajetória.</p>
+                <p>Eu sou a detentora dos meus resultados. Não transfiro responsabilidade nem distribuo culpa. Assumo a autoria completa.</p>
             </div>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 46: MANIFESTO 03-06 -->
-        <div class="page-sheet">
             <div class="manifesto-item">
                 <div class="manifesto-header"><div class="manifesto-num">03</div><h3 class="manifesto-title">Padrões sobre Aprovação</h3></div>
                 <p>Eu estabeleço padrões, não busco aprovação. Prefiro ser respeitada a ser querida quando estas coisas estão em conflito.</p>
             </div>
+            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
+        </div>
+
+        <!-- PÁGINA 23: MANIFESTO 04-07 -->
+        <div class="page-sheet">
             <div class="manifesto-item">
                 <div class="manifesto-header"><div class="manifesto-num">04</div><h3 class="manifesto-title">Proteção e Soberania</h3></div>
                 <p>Meus limites são proteções inegociáveis. O No-Fly Zone garante um espaço onde a excelência pode florescer plenamente.</p>
             </div>
             <div class="manifesto-item">
                 <div class="manifesto-header"><div class="manifesto-num">05</div><h3 class="manifesto-title">Tempo e Estratégia</h3></div>
-                <p>Meu tempo é estratégico. Cada não é um ato de cuidado com minha energia, minha missão e minhas escolhas.</p>
+                <p>Meu tempo é estratégico. Cada não é um ato de cuidado com minha energia, minha missão e minhas escolhas profissionais.</p>
             </div>
             <div class="manifesto-item">
                 <div class="manifesto-header"><div class="manifesto-num">06</div><h3 class="manifesto-title">A Busca pela Maestria</h3></div>
                 <p>Eu construo maestria, não versatilidade. Escolho a profundidade e invisto em um monopólio de competência irreplicável.</p>
             </div>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 47: MANIFESTO 07-10 -->
-        <div class="page-sheet">
             <div class="manifesto-item">
                 <div class="manifesto-header"><div class="manifesto-num">07</div><h3 class="manifesto-title">O Rigor dos Dados</h3></div>
                 <p>Eu meço para crescer. Reviso com honestidade brutal e ajusto com base no que os dados reais mostram de verdade.</p>
             </div>
+            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
+        </div>
+
+        <!-- PÁGINA 24: MANIFESTO 08-10 + FINAL -->
+        <div class="page-sheet">
             <div class="manifesto-item">
                 <div class="manifesto-header"><div class="manifesto-num">08</div><h3 class="manifesto-title">A Arena da Vida Real</h3></div>
-                <p>Eu ajo no campo real. Entro no ringue das reuniões difíceis e decisões sabendo que é ali que a maestria é construída.</p>
+                <p>Eu ajo no campo real. Entro no ringue das reuniões difíceis sabendo que é ali que a maestria é construída.</p>
             </div>
             <div class="manifesto-item">
                 <div class="manifesto-header"><div class="manifesto-num">09</div><h3 class="manifesto-title">Ecossistema Elevado</h3></div>
@@ -568,20 +394,14 @@
             </div>
             <div class="manifesto-item">
                 <div class="manifesto-header"><div class="manifesto-num">10</div><h3 class="manifesto-title">O Silêncio Produtivo</h3></div>
-                <p>Eu entrego, não anuncio. Deixo que meus resultados falem por mim. Trabalho sem a necessidade de validação constante.</p>
+                <p>Eu entrego, não anuncio. Deixo que meus resultados falem por mim, sem a necessidade de validação constante.</p>
             </div>
+            <div class="quote" style="margin: 20px 35px;">"Soberania é a escolha diária de ser inteiramente quem você é."</div>
+            <p>Você não é o resultado do que os outros esperam de você. Você é o resultado do que você constrói - com consistência, com limites, com maestria, e com a coragem de seguir em frente. A SOBERANIA COMEÇA AGORA.</p>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- PÁGINA 48: FINAL STATEMENT -->
-        <div class="page-sheet">
-            <div class="quote">"Soberania não é um destino. É a escolha que você faz todos os dias de ser inteiramente quem você é - sem concessões desnecessárias, sem pedir permissão, e sem esperar pelo aplauso que às vezes não vem."</div>
-            <p style="margin-top: 60px;">Você não é o resultado do que os outros esperam de você. Você é o resultado do que você constrói - com consistência, com limites, com maestria, e com a coragem de seguir em frente mesmo quando o caminho não é linear.</p>
-            <h2 style="text-align: center; margin-top: 100px; letter-spacing: 0.3em;">A SOBERANIA COMEÇA AGORA.</h2>
-            <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
-        </div>
-
-        <!-- PÁGINA 49: DEDICATÓRIA -->
+        <!-- PÁGINA 25: DEDICATÓRIA -->
         <div class="page-sheet back-cover">
             <div class="dedication-title">DEDICATÓRIA</div>
             <div class="dedication-text">
@@ -595,7 +415,7 @@
 
     <button id="download-btn" onclick="generatePDF()">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="white"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-        Baixar Ebook Premium (49 Páginas)
+        Baixar Ebook Premium (25 Páginas)
     </button>
 
     <script>
@@ -603,7 +423,7 @@
             const btn = document.getElementById('download-btn');
             const originalText = btn.innerHTML;
             btn.disabled = true;
-            btn.innerHTML = 'Processando PDF HD...';
+            btn.innerHTML = 'Processando...';
 
             try {
                 const pages = document.querySelectorAll('.page-sheet');
@@ -611,7 +431,6 @@
 
                 for (let i = 0; i < pages.length; i++) {
                     btn.innerHTML = `Gerando página ${i + 1} de ${pages.length}...`;
-                    
                     const canvas = await html2canvas(pages[i], {
                         scale: 2.5,
                         useCORS: true,
@@ -620,16 +439,14 @@
                         height: 1202,
                         logging: false
                     });
-
                     const imgData = canvas.toDataURL('image/jpeg', 0.95);
                     if (i > 0) pdf.addPage();
                     pdf.addImage(imgData, 'JPEG', 0, 0, 210, 297);
                 }
-
-                pdf.save('A_Vantagem_Soberana_Original_Integral.pdf');
+                pdf.save('A_Vantagem_Soberana_Luxo.pdf');
             } catch (error) {
                 console.error(error);
-                alert('Erro ao gerar o e-book.');
+                alert('Erro ao gerar PDF.');
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = originalText;
