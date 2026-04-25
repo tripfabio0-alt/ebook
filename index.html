@@ -343,40 +343,53 @@
         }
 
         @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
             html, body { 
                 background: white !important; 
-                padding: 0 !important; 
                 margin: 0 !important;
-                height: auto !important;
+                padding: 0 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
             }
             .book-page { 
-                width: 100% !important; 
+                width: 210mm !important;
                 max-width: none !important; 
                 margin: 0 !important; 
+                padding: 0 !important;
                 gap: 0 !important;
                 display: block !important;
             }
             .page-sheet {
+                width: 210mm !important;
+                height: 297mm !important;
+                min-height: 297mm !important;
+                padding: 80px 100px 180px 100px !important;
+                margin: 0 !important;
                 box-shadow: none !important;
                 border: none !important;
-                margin: 0 !important; /* Remove margin in PDF */
-                padding: 60px 80px 140px 80px !important;
-                page-break-after: always;
-                page-break-inside: avoid;
-                height: 297mm !important;
-                width: 210mm !important;
+                page-break-after: always !important;
+                page-break-inside: avoid !important;
                 position: relative !important;
-                box-sizing: border-box !important;
                 background-color: #fdfbf7 !important;
+                box-sizing: border-box !important;
+                overflow: hidden !important;
             }
             .page-sheet.cover-page {
                 padding: 0 !important;
+                height: 297mm !important;
                 background-color: #000 !important;
             }
             .cover-image {
-                height: 297mm !important;
                 width: 210mm !important;
+                height: 297mm !important;
                 object-fit: cover !important;
+            }
+            .page-sheet.back-cover {
+                background-color: #1a120f !important;
+                height: 297mm !important;
             }
             #download-btn {
                 display: none !important;
@@ -625,7 +638,7 @@
             <p>O que você não tolera define quem você é com mais precisão do que aquilo que você valoriza. Valores são
                 fáceis de declarar em momentos de facilidade. O que você não tolera - e efetivamente não tolera, com
                 consequências reais - define o contorno real do seu caráter profissional.</p>
-            <p>O conceito do No-Fly Zone é simples: há comportamentos que são absolutamente incompatíveis com o ambiente
+            <p>O conceito do No-Fly Zone é simples: há comportamentos que são absolutely incompatíveis com o ambiente
                 que você está construindo. Não são preferências. Não são sugestões. São limites inegociáveis,
                 comunicados com clareza, e aplicados com consistência.</p>
 
@@ -1087,7 +1100,7 @@
                         <h3 class="manifesto-title">ECOSSISTEMA ELEVADO</h3>
                     </div>
                     <p class="manifesto-text">Meu ecossistema me eleva. Sou intencional sobre quem tem acesso à minha
-                        energia e ao meu tempo. Construo relações que me desafiam, me expandem, e me sustentam.</p>
+                        energy e ao meu tempo. Construo relações que me desafiam, me expandem, e me sustentam.</p>
                 </div>
 
                 <div class="manifesto-item">
@@ -1126,89 +1139,10 @@
             <div class="dedication-footer">A Vantagem Soberana</div>
         </div>
     </div> <!-- END BOOK -->
-    <button id="download-btn" onclick="generatePDF()">
+    <button id="download-btn" onclick="window.print()">
         <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
         Baixar Ebook (PDF)
     </button>
-
-    <script>
-        async function generatePDF() {
-            const btn = document.getElementById('download-btn');
-            const originalText = btn.innerHTML;
-            
-            // Show loading state
-            btn.disabled = true;
-            btn.innerHTML = '<svg class="spinner" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle></svg> Preparando...';
-            btn.style.opacity = '0.7';
-
-            // Ensure we are at the top to avoid capture offsets
-            window.scrollTo(0, 0);
-
-            // Wait a bit for any lazy-loaded elements
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            
-            btn.innerHTML = '<svg class="spinner" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle></svg> Capturando Páginas...';
-
-            const element = document.querySelector('.book-page');
-            
-            const opt = {
-                margin: 0,
-                filename: 'A_Vantagem_Soberana.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { 
-                    scale: 2,
-                    useCORS: true,
-                    allowTaint: true,
-                    backgroundColor: '#ffffff',
-                    logging: false,
-                    onclone: (clonedDoc) => {
-                        // Force styles on the cloned element to ensure visibility
-                        const pages = clonedDoc.querySelectorAll('.page-sheet');
-                        pages.forEach(p => {
-                            p.style.boxShadow = 'none';
-                            p.style.margin = '0';
-                            p.style.display = 'block';
-                            p.style.pageBreakAfter = 'always';
-                        });
-                    }
-                },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-                pagebreak: { mode: ['css', 'legacy'] }
-            };
-
-            try {
-                // Generate PDF
-                await html2pdf().set(opt).from(element).save();
-            } catch (error) {
-                console.error('Erro:', error);
-                alert('Erro ao gerar PDF. Tente usar o botão de imprimir do navegador (Ctrl+P) como alternativa.');
-            } finally {
-                btn.disabled = false;
-                btn.innerHTML = originalText;
-                btn.style.opacity = '1';
-            }
-        }
-    </script>
-
-    <style>
-        /* Spinner animation */
-        .spinner {
-            width: 20px;
-            height: 20px;
-            animation: rotate 2s linear infinite;
-        }
-        .spinner circle {
-            stroke: white;
-            stroke-linecap: round;
-            animation: dash 1.5s ease-in-out infinite;
-        }
-        @keyframes rotate { 100% { transform: rotate(360deg); } }
-        @keyframes dash {
-            0% { stroke-dasharray: 1, 150; stroke-dashoffset: 0; }
-            50% { stroke-dasharray: 90, 150; stroke-dashoffset: -35; }
-            100% { stroke-dasharray: 90, 150; stroke-dashoffset: -124; }
-        }
-    </style>
 
 </body>
 
