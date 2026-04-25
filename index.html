@@ -1134,46 +1134,65 @@
 
     <script>
         async function generatePDF() {
-            const { jsPDF } = window.jspdf;
+            const btn = document.getElementById('download-btn');
+            const originalText = btn.innerHTML;
+            
+            // Show loading state
+            btn.disabled = true;
+            btn.innerHTML = '<svg class="spinner" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle></svg> Gerando PDF...';
+            btn.style.opacity = '0.7';
+
             const sheets = document.querySelectorAll('.page-sheet');
-            const pdf = new html2pdf.Bundle().set({
+            
+            // Use a simpler, faster configuration
+            const opt = {
                 margin: 0,
                 filename: 'A_Vantagem_Soberana.pdf',
-                image: { type: 'jpeg', quality: 1.0 },
+                image: { type: 'jpeg', quality: 0.95 },
                 html2canvas: { 
-                    scale: 3, // High resolution
+                    scale: 2, // Balanced for speed and quality
                     useCORS: true,
-                    letterRendering: true,
-                    logging: false
+                    logging: false,
+                    letterRendering: true
                 },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            });
+            };
 
-            // Hide button
-            const btn = document.getElementById('download-btn');
-            btn.style.display = 'none';
-
-            // Custom worker to process each page as a 'photo'
-            const worker = html2pdf().set({
-                margin: 0,
-                filename: 'A_Vantagem_Soberana.pdf',
-                image: { type: 'jpeg', quality: 1.0 },
-                html2canvas: { scale: 3, useCORS: true },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-                pagebreak: { mode: 'legacy' }
-            }).from(sheets[0]).toPdf().get('pdf');
-
-            for (let i = 1; i < sheets.length; i++) {
-                worker.then((pdf) => {
-                    pdf.addPage();
-                }).from(sheets[i]).toContainer().toCanvas().toImg().toPdf();
+            try {
+                // Generate PDF using the standard element-based approach but optimized
+                // This is generally faster than manual page-by-page worker chaining
+                await html2pdf().set(opt).from(document.querySelector('.book-page')).save();
+            } catch (error) {
+                console.error('Erro ao gerar PDF:', error);
+                alert('Ocorreu um erro ao gerar o PDF. Por favor, tente novamente.');
+            } finally {
+                // Restore button
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+                btn.style.opacity = '1';
             }
-
-            worker.save().then(() => {
-                btn.style.display = 'flex';
-            });
         }
     </script>
+
+    <style>
+        /* Spinner animation */
+        .spinner {
+            width: 20px;
+            height: 20px;
+            animation: rotate 2s linear infinite;
+        }
+        .spinner circle {
+            stroke: white;
+            stroke-linecap: round;
+            animation: dash 1.5s ease-in-out infinite;
+        }
+        @keyframes rotate { 100% { transform: rotate(360deg); } }
+        @keyframes dash {
+            0% { stroke-dasharray: 1, 150; stroke-dashoffset: 0; }
+            50% { stroke-dasharray: 90, 150; stroke-dashoffset: -35; }
+            100% { stroke-dasharray: 90, 150; stroke-dashoffset: -124; }
+        }
+    </style>
 
 </body>
 
