@@ -29,7 +29,7 @@
 
         .page-sheet {
             background-color: #fdfbf7;
-            padding: 80px 100px 140px 100px;
+            padding: 80px 100px 180px 100px; /* Increased bottom padding for the even larger logo */
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
             border-radius: 2px;
             position: relative;
@@ -54,16 +54,16 @@
         .page-sheet::before {
             content: "";
             position: absolute;
-            bottom: 15px; /* Slightly lower to occupy the new padding space */
+            bottom: 5px; /* Lowered further to use the new padding space */
             left: 50%;
             transform: translateX(-50%);
-            width: 280px; /* Re-increased size within the new margins */
-            height: 110px;
+            width: 350px; /* Significantly larger as requested */
+            height: 140px;
             background-image: url('logo_v3.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            opacity: 0.8; /* Balanced visibility */
+            opacity: 0.85;
             mix-blend-mode: multiply;
         }
 
