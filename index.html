@@ -16,7 +16,7 @@
             font-family: 'Lora', serif;
             color: #2c3e50;
             line-height: 1.85;
-            font-size: 16pt; /* Aumentado para preencher melhor as páginas */
+            font-size: 16pt;
             background: radial-gradient(circle, #2c343f 0%, #0f141a 100%);
             padding: 50px 0;
             min-height: 100vh;
@@ -35,7 +35,7 @@
             background-color: #fdfbf7;
             width: 850px;
             height: 1202px;
-            padding: 100px 100px 180px 100px;
+            padding: 90px 95px 190px 95px; /* Aumentado padding inferior para evitar sobreposição da logo */
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
             position: relative;
             counter-increment: page-counter;
@@ -55,25 +55,28 @@
             font-size: 1.1em;
         }
 
-        /* Logo de Rodapé com Multiply para garantir transparência do branco */
+        /* 
+           REMOÇÃO DE FUNDO BRANCO VIA SVG FILTER 
+           Esta técnica é superior ao mix-blend-mode pois funciona em quase todos os renderizadores de canvas.
+        */
         .page-footer-logo-container {
             position: absolute;
-            bottom: 25px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            width: 360px;
-            height: 125px;
+            width: 320px; /* Reduzido levemente para evitar conflitos */
+            height: 110px;
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 10;
-            mix-blend-mode: multiply; /* Faz o fundo branco da imagem desaparecer sobre o papel */
         }
         .footer-logo-img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            filter: contrast(1.1); /* Ajuda a limpar resíduos de cinza no branco */
+            /* Filtro de Matriz de Cor: Transforma tons claros (branco) em transparência */
+            filter: url(#remove-white) contrast(1.1);
         }
 
         .page-sheet.cover-page .page-footer-logo-container { display: none; }
@@ -136,6 +139,21 @@
 </head>
 
 <body>
+    <!-- FILTRO SVG PARA REMOVER O BRANCO DA IMAGEM -->
+    <svg style="position: absolute; width: 0; height: 0; pointer-events: none;">
+        <filter id="remove-white">
+            <!-- 
+                A matriz abaixo subtrai os canais R, G e B do canal Alpha.
+                Se a cor for branca (1,1,1), o alpha resultante será 1 - (1+1+1)/3 = 0 (Transparente).
+                Se for escuro/ouro, o alpha será preservado.
+            -->
+            <feColorMatrix type="matrix" values="1 0 0 0 0
+                                                 0 1 0 0 0
+                                                 0 0 1 0 0
+                                                 -1.5 -1.5 -1.5 4.5 0" />
+        </filter>
+    </svg>
+
     <div class="book-page">
         <!-- CAPA -->
         <div class="page-sheet cover-page">
@@ -145,7 +163,7 @@
         <!-- SUMÁRIO -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CONTEÚDO</span> Sumário</div>
-            <div style="font-family: 'Montserrat', sans-serif; font-size: 1.15em; line-height: 2.6; max-width: 650px; margin: 0 auto;">
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 1.15em; line-height: 2.5; max-width: 650px; margin: 0 auto;">
                 Introdução | O Fim do "Ser Querida"<br>
                 Capítulo 1 | O Paradoxo da Respeitabilidade<br>
                 Capítulo 2 | A Ciência da Consistência<br>
@@ -163,7 +181,7 @@
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- INTRODUÇÃO (NOVA PÁGINA) -->
+        <!-- INTRODUÇÃO -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">INTRODUÇÃO</span> O Fim do Ser Querida</div>
             <p>Durante muito tempo, foi-nos vendido um mito poderoso: a ideia de que o sucesso feminino é uma equação de competência somada a uma personalidade agradável. Crescemos ouvindo que precisamos ser gentis, acessíveis, colaborativas — sempre dispostas a agradar.</p>
@@ -198,7 +216,7 @@
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- CAPÍTULO 1 (NOVA PÁGINA) -->
+        <!-- CAPÍTULO 1 -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 1</span> O Paradoxo da Respeitabilidade</div>
             <p>Existe uma crença profundamente enraizada no imaginário coletivo sobre liderança feminina: a ideia de que respeito é uma recompensa pela diplomacia. Que se você for suficientemente gentil, suficientemente cuidadosa com as palavras, suficientemente atenta às necessidades dos outros, as pessoas naturalmente passarão a te respeitar.</p>
@@ -229,7 +247,7 @@
         <div class="page-sheet">
             <h3>A Mudança de Mentalidade</h3>
             <p>A transição de buscar aprovação para estabelecer padrões começa com uma mudança fundamental na sua relação com a opinião alheia. Não se trata de indiferença — trata-se de hierarquização. Você passa a distinguir entre feedback valioso, que melhora sua performance e seus resultados, e ruído de aprovação.</p>
-            <p>A mulher soberana escuta o primeiro com atenção genuína. O segundo ela observa com curiosidade, mas não permite que dite suas ações. Esta distinção exige um trabalho interno significativo.</p>
+            <p>A mulher soberana escuta o primeiro com atenção genuína. O segundo ela observa com curiosidade, mas não permite que dite suas ações.</p>
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
@@ -241,7 +259,7 @@
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- CAPÍTULO 2 (NOVA PÁGINA) -->
+        <!-- CAPÍTULO 2 -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 2</span> A Ciência da Consistência</div>
             <p>Se há um único princípio que unifica todos os outros neste livro, é este: consistência é mais poderosa do que qualquer talento, carisma, ou conexão que você possa ter. A consistência é o multiplicador silencioso que transforma competência em autoridade, intenção em resultado, e promessa em reputação.</p>
@@ -271,7 +289,7 @@
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- CAPÍTULO 3 (NOVA PÁGINA) -->
+        <!-- CAPÍTULO 3 -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 3</span> O Princípio da Ausência de Desculpas</div>
             <p>Existe uma diferença fundamental entre explicar e justificar. Explicar é fornecer contexto relevante para decisões futuras. Justificar é construir um caso de defesa para proteger sua identidade de uma percepção de fracasso. Toda justificativa segue uma estrutura reconhecível.</p>
@@ -293,7 +311,7 @@
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- CAPÍTULO 4 (NOVA PÁGINA) -->
+        <!-- CAPÍTULO 4 -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 4</span> O No-Fly Zone</div>
             <p>O que você não tolera define quem você é com mais precisão do que aquilo que você valoriza. O conceito do No-Fly Zone são comportamentos inegociáveis. Pessoas com limites claros são as mais fáceis de trabalhar, porque as regras do jogo são conhecidas.</p>
@@ -309,7 +327,7 @@
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- CAPÍTULO 5 (NOVA PÁGINA) -->
+        <!-- CAPÍTULO 5 -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 5</span> O Custo de Manter o Peso Morto</div>
             <p>Toda decisão de manter tem um custo de oportunidade. O peso morto se camufla de lealdade ou esperança. A mulher soberana vê através dessas camuflagens e identifica o que verdadeiramente merece sua energia. Cada "sim" dado sem reflexão é um "não" implícito para algo mais importante.</p>
@@ -324,7 +342,7 @@
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- CAPÍTULO 6 (NOVA PÁGINA) -->
+        <!-- CAPÍTULO 6 -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 6</span> O Poder da Recusa</div>
             <p>Dizer não transforma trajetórias. É o não claro e firme de quem sabe o valor da sua energia. Seu tempo é seu ativo mais escasso e irrecuperável. Uma vez que passou, passou. A maioria das pessoas age como se o tempo fosse infinito, mas a mulher soberana trata cada bloco como decisão estratégica.</p>
@@ -339,7 +357,7 @@
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- CAPÍTULO 7 (NOVA PÁGINA) -->
+        <!-- CAPÍTULO 7 -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 7</span> O Monopólio da Competência</div>
             <p>Diferenciação não vem do que você sabe, mas do que você faz. A execução impecável é o diferencial mais valioso e raro. A mulher soberana constrói um monopólio de competência através de prática deliberada. O mercado paga prêmio por especialistas.</p>
@@ -355,7 +373,7 @@
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- CAPÍTULO 8 (NOVA PÁGINA) -->
+        <!-- CAPÍTULO 8 -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 8</span> KPIs de Vida</div>
             <p>Se você não consegue medir o progresso, você não tem uma estratégia. A mulher soberana aplica rigor analítico ao seu próprio desenvolvimento. Dados não têm ego; eles dizem o que é, sem filtros. O ego quer acreditar no progresso, mas os dados confirmam a realidade.</p>
@@ -371,7 +389,7 @@
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- CAPÍTULO 9 (NOVA PÁGINA) -->
+        <!-- CAPÍTULO 9 -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 9</span> O Campo de Treinamento da Vida Real</div>
             <p>Conhecer um princípio é diferente de vivê-lo. A única arena onde a maestria acontece é a vida real. Conhecimento teórico sem aplicação não é competência; é conforto intelectual. Reuniões difíceis e decisões sob pressão são suas oportunidades de construção de autoridade real.</p>
@@ -386,7 +404,7 @@
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- CAPÍTULO 10 (NOVA PÁGINA) -->
+        <!-- CAPÍTULO 10 -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 10</span> O Ecossistema de Elite</div>
             <p>Você é o resultado médio das pessoas com quem passa mais tempo. Suas referências e padrões são moldados pelo ecossistema humano em que está inserida. A curadoria do seu círculo é uma decisão de gestão vital. Construa um ecossistema que eleve seu teto de exigência.</p>
@@ -400,7 +418,7 @@
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- CAPÍTULO 11 (NOVA PÁGINA) -->
+        <!-- CAPÍTULO 11 -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CAPÍTULO 11</span> A Ação Silenciosa</div>
             <p>O amador anuncia. O mestre entrega. Existe uma correlação negativa: quanto mais alguém fala sobre o que vai fazer, menos energia resta para a execução real. O ato de anunciar gera satisfação prematura que reduz a motivação para agir. Resultados concretos são evidências irrefutáveis.</p>
@@ -415,7 +433,7 @@
             <div class="page-footer-logo-container"><img src="logo_v3.png" class="footer-logo-img"></div>
         </div>
 
-        <!-- CONCLUSÃO (NOVA PÁGINA) -->
+        <!-- CONCLUSÃO -->
         <div class="page-sheet">
             <div class="chapter-title"><span class="chapter-number">CONCLUSÃO</span> Manifesto Soberano</div>
             <div class="manifesto-item">
@@ -495,7 +513,7 @@
 
     <button id="download-btn" onclick="generatePDF()">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="white"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-        Baixar Ebook Premium (Final)
+        Baixar Ebook Premium
     </button>
 
     <script>
@@ -503,7 +521,7 @@
             const btn = document.getElementById('download-btn');
             const originalText = btn.innerHTML;
             btn.disabled = true;
-            btn.innerHTML = 'Processando PDF HD...';
+            btn.innerHTML = 'Processando...';
 
             try {
                 const pages = document.querySelectorAll('.page-sheet');
@@ -523,7 +541,7 @@
                     if (i > 0) pdf.addPage();
                     pdf.addImage(imgData, 'JPEG', 0, 0, 210, 297);
                 }
-                pdf.save('A_Vantagem_Soberana_Elite.pdf');
+                pdf.save('A_Vantagem_Soberana_Premium.pdf');
             } catch (error) {
                 console.error(error);
                 alert('Erro ao gerar PDF.');
