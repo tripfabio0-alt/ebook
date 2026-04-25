@@ -103,21 +103,31 @@
         li { margin-bottom: 10px; }
         
         /* Estilos do Manifesto */
-        .manifesto-container { max-width: 600px; margin: auto; }
-        .manifesto-item { margin-bottom: 60px; position: relative; }
+        .manifesto-container { max-width: 800px; margin: auto; }
+        .manifesto-item { 
+            margin-bottom: 80px; 
+            display: flex; 
+            gap: 30px; 
+            align-items: flex-start;
+        }
         .manifesto-num { 
-            font-size: 1.2em; 
+            font-size: 4em; 
             color: #8b6e3f; 
+            opacity: 0.2; 
             font-weight: bold; 
             font-family: 'Montserrat', sans-serif;
-            border-bottom: 2px solid #8b6e3f;
-            display: inline-block;
-            margin-bottom: 10px;
+            line-height: 1;
+            flex-shrink: 0;
+            width: 100px;
+            text-align: right;
+        }
+        .manifesto-content {
+            flex-grow: 1;
         }
         .manifesto-title {
-            position: relative;
-            z-index: 1;
-            margin-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.4em;
         }
         .manifesto-text {
             position: relative;
@@ -494,62 +504,82 @@
                 
                 <div class="manifesto-item">
                     <div class="manifesto-num">01</div>
-                    <h3 class="manifesto-title">A ARQUITETURA DO AMBIENTE</h3>
-                    <p class="manifesto-text">Eu sou a arquiteta do meu ambiente. Não espero que o mundo mude para me acomodar. Reconfiguro meu ambiente - as pessoas ao meu redor, as estruturas em que opero, os rituais que sustentam meu trabalho - para que sirva aos meus objetivos.</p>
+                    <div class="manifesto-content">
+                        <h3 class="manifesto-title">A ARQUITETURA DO AMBIENTE</h3>
+                        <p class="manifesto-text">Eu sou a arquiteta do meu ambiente. Não espero que o mundo mude para me acomodar. Reconfiguro meu ambiente - as pessoas ao meu redor, as estruturas em que opero, os rituais que sustentam meu trabalho - para que sirva aos meus objetivos.</p>
+                    </div>
                 </div>
 
                 <div class="manifesto-item">
                     <div class="manifesto-num">02</div>
-                    <h3 class="manifesto-title">A DETENTORA DOS RESULTADOS</h3>
-                    <p class="manifesto-text">Eu sou a detentora dos meus resultados. Não transfiro responsabilidade. Não distribuo culpa. Reconheço que resultados - bons ou ruins - são consequências diretas das decisões que tomei ou deixei de tomar. Assumo a autoria completa da minha trajetória.</p>
+                    <div class="manifesto-content">
+                        <h3 class="manifesto-title">A DETENTORA DOS RESULTADOS</h3>
+                        <p class="manifesto-text">Eu sou a detentora dos meus resultados. Não transfiro responsabilidade. Não distribuo culpa. Reconheço que resultados - bons ou ruins - são consequências diretas das decisões que tomei ou deixei de tomar. Assumo a autoria completa da minha trajetória.</p>
+                    </div>
                 </div>
 
                 <div class="manifesto-item">
                     <div class="manifesto-num">03</div>
-                    <h3 class="manifesto-title">PADRÕES SOBRE APROVAÇÃO</h3>
-                    <p class="manifesto-text">Eu estabeleço padrões, não busco aprovação. Sei que o respeito genuíno não é conquistado pela diplomacia - é conquistado pela demonstração consistente de valor real. Prefiro ser respeitada a ser querida quando estas duas coisas estão em conflito.</p>
+                    <div class="manifesto-content">
+                        <h3 class="manifesto-title">PADRÕES SOBRE APROVAÇÃO</h3>
+                        <p class="manifesto-text">Eu estabeleço padrões, não busco aprovação. Sei que o respeito genuíno não é conquistado pela diplomacia - é conquistado pela demonstração consistente de valor real. Prefiro ser respeitada a ser querida quando estas duas coisas estão em conflito.</p>
+                    </div>
                 </div>
 
                 <div class="manifesto-item">
                     <div class="manifesto-num">04</div>
-                    <h3 class="manifesto-title">PROTEÇÃO E SOBERANIA</h3>
-                    <p class="manifesto-text">Meus limites são proteções, não obstáculos. O No-Fly Zone que estabeleci para minha vida profissional não é sobre controle - é sobre soberania. É sobre garantir que o espaço que construo seja um espaço onde a excelência pode florescer.</p>
+                    <div class="manifesto-content">
+                        <h3 class="manifesto-title">PROTEÇÃO E SOBERANIA</h3>
+                        <p class="manifesto-text">Meus limites são proteções, não obstáculos. O No-Fly Zone que estabeleci para minha vida profissional não é sobre controle - é sobre soberania. É sobre garantir que o espaço que construo seja um espaço onde a excelência pode florescer.</p>
+                    </div>
                 </div>
 
                 <div class="manifesto-item">
                     <div class="manifesto-num">05</div>
-                    <h3 class="manifesto-title">TEMPO E ESTRATÉGIA</h3>
-                    <p class="manifesto-text">Meu tempo é meu ativo mais precioso. Cada sim que digo é uma escolha estratégica. Cada não que digo é um ato de cuidado - com minha energia, com minha missão, e com as pessoas às quais digo sim com genuína disponibilidade.</p>
+                    <div class="manifesto-content">
+                        <h3 class="manifesto-title">TEMPO E ESTRATÉGIA</h3>
+                        <p class="manifesto-text">Meu tempo é meu ativo mais precioso. Cada sim que digo é uma escolha estratégica. Cada não que digo é um ato de cuidado - com minha energia, com minha missão, e com as pessoas às quais digo sim com genuína disponibilidade.</p>
+                    </div>
                 </div>
 
                 <div class="manifesto-item">
                     <div class="manifesto-num">06</div>
-                    <h3 class="manifesto-title">A BUSCA PELA MAESTRIA</h3>
-                    <p class="manifesto-text">Eu construo maestria, não versatilidade. Escolho a profundidade em vez da dispersão. Invisto em construir um monopólio de competência que ninguém pode facilmente replicar.</p>
+                    <div class="manifesto-content">
+                        <h3 class="manifesto-title">A BUSCA PELA MAESTRIA</h3>
+                        <p class="manifesto-text">Eu construo maestria, não versatilidade. Escolho a profundidade em vez da dispersão. Invisto em construir um monopólio de competência que ninguém pode facilmente replicar.</p>
+                    </div>
                 </div>
 
                 <div class="manifesto-item">
                     <div class="manifesto-num">07</div>
-                    <h3 class="manifesto-title">O RIGOR DOS DADOS</h3>
-                    <p class="manifesto-text">Eu meço para crescer. Não me contento com a sensação subjetiva de progresso. Defino métricas claras, reviso com honestidade brutal, e ajusto com base no que os dados reais mostram.</p>
+                    <div class="manifesto-content">
+                        <h3 class="manifesto-title">O RIGOR DOS DADOS</h3>
+                        <p class="manifesto-text">Eu meço para crescer. Não me contento com a sensação subjetiva de progresso. Defino métricas claras, reviso com honestidade brutal, e ajusto com base no que os dados reais mostram.</p>
+                    </div>
                 </div>
 
                 <div class="manifesto-item">
                     <div class="manifesto-num">08</div>
-                    <h3 class="manifesto-title">A ARENA DA VIDA REAL</h3>
-                    <p class="manifesto-text">Eu ajo no campo real. Não espero a condição perfeita para agir. Entro no ringue da vida real - reuniões difíceis, decisões sob pressão, execução diária - sabendo que é exatamente aí que a maestria é construída.</p>
+                    <div class="manifesto-content">
+                        <h3 class="manifesto-title">A ARENA DA VIDA REAL</h3>
+                        <p class="manifesto-text">Eu ajo no campo real. Não espero a condição perfeita para agir. Entro no ringue da vida real - reuniões difíceis, decisões sob pressão, execução diária - sabendo que é exatamente aí que a maestria é construída.</p>
+                    </div>
                 </div>
 
                 <div class="manifesto-item">
                     <div class="manifesto-num">09</div>
-                    <h3 class="manifesto-title">ECOSSISTEMA ELEVADO</h3>
-                    <p class="manifesto-text">Meu ecossistema me eleva. Sou intencional sobre quem tem acesso à minha energia e ao meu tempo. Construo relações que me desafiam, me expandem, e me sustentam.</p>
+                    <div class="manifesto-content">
+                        <h3 class="manifesto-title">ECOSSISTEMA ELEVADO</h3>
+                        <p class="manifesto-text">Meu ecossistema me eleva. Sou intencional sobre quem tem acesso à minha energia e ao meu tempo. Construo relações que me desafiam, me expandem, e me sustentam.</p>
+                    </div>
                 </div>
 
                 <div class="manifesto-item">
                     <div class="manifesto-num">10</div>
-                    <h3 class="manifesto-title">O SILÊNCIO PRODUTIVO</h3>
-                    <p class="manifesto-text">Eu entrego. Não anuncio. Deixo que meus resultados falem por mim. Trabalho em silêncio produtivo, sem a necessidade de validação constante.</p>
+                    <div class="manifesto-content">
+                        <h3 class="manifesto-title">O SILÊNCIO PRODUTIVO</h3>
+                        <p class="manifesto-text">Eu entrego. Não anuncio. Deixo que meus resultados falem por mim. Trabalho em silêncio produtivo, sem a necessidade de validação constante.</p>
+                    </div>
                 </div>
 
             </div>
